@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "footage-mcp"
 version = "0.1.0"
-description = "Free footage search for AI video agents: Pexels, Pixabay, Wikimedia Commons, Internet Archive, NASA"
+description = "Free footage search for AI video agents: Pexels, Pixabay, Wikimedia Commons, Internet Archive, Europeana, NASA"
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"

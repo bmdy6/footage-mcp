@@ -36,6 +36,8 @@ def footage_search(query: str, limit: int = 12, sources: list[str] | None = None
       pexels, pixabay  modern stock B-roll (need PEXELS_API_KEY / PIXABAY_API_KEY, skipped otherwise)
       commons          Wikimedia Commons, free-licensed video
       archive          Internet Archive public-domain / CC films, newsreels (documentary feel)
+      europeana        European film archives: PDM, CC0, CC BY, CC BY-SA direct video files
+                       (public demo key by default; optional EUROPEANA_API_KEY)
       nasa             NASA space, Earth and science footage
 
     Each result has id, title, thumbnail, duration, size and license
