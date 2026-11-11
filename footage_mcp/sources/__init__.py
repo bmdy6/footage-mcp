@@ -6,9 +6,9 @@ from __future__ import annotations
 
 import re
 
-from footage_mcp.sources import archive, commons, nasa, pexels, pixabay
+from footage_mcp.sources import archive, commons, europeana, nasa, pexels, pixabay
 
-SOURCES = {m.NAME: m for m in (pexels, pixabay, commons, archive, nasa)}
+SOURCES = {m.NAME: m for m in (pexels, pixabay, commons, archive, europeana, nasa)}
 
 
 def clip(source: str, native_id: str, **fields) -> dict:

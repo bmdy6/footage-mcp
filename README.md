@@ -1,6 +1,6 @@
 # footage-mcp
 
-给 AI 做视频用的免费素材库：一次搜 5 个来源，先看帧再下载，每条素材带授权信息，下载记录写进项目。
+给 AI 做视频用的免费素材库：一次搜 6 个来源，先看帧再下载，每条素材带授权信息，下载记录写进项目。
 
 [English](#english)
 
@@ -59,9 +59,15 @@ env = { PEXELS_API_KEY = "xxx", PIXABAY_API_KEY = "xxx" }
 | `pixabay` | 空镜、动态背景 | 免费，[PIXABAY_API_KEY](https://pixabay.com/api/docs/) |
 | `commons` | Wikimedia Commons 自由授权视频 | 不需要 |
 | `archive` | Internet Archive 公有领域老电影、新闻片，纪录片质感 | 不需要 |
+| `europeana` | 欧洲电影档案、新闻片、纪录片；仅返回 PDM、CC0、CC BY、CC BY-SA 的视频文件 | 默认公共 demo key；可设 [EUROPEANA_API_KEY](https://www.europeana.eu/en/apis) |
 | `nasa` | 太空、地球、科学影像 | 不需要 |
 
 没配 key 的来源会跳过，结果里会写明 `skipped: set PEXELS_API_KEY`。
+
+Europeana 没配 `EUROPEANA_API_KEY` 时使用公共 `api2demo`，配置后优先使用自己的 key。
+公共 key 共享额度，稳定使用建议申请免费 key。搜索只收录开放许可且直接指向视频文件的记录，
+不返回 YouTube、Vimeo 等播放器页面。`inspect` 和 `download` 会按 ID 重新读取当前许可；
+文件级许可优先于记录级许可，缺失、含糊或受限的许可会拒绝。CC BY 需要署名，CC BY-SA 还要求改编作品使用相同许可。
 
 ## 四个工具
 
@@ -107,8 +113,8 @@ python -m unittest discover -s tests   # 离线测试，不联网
 
 ## English
 
-Free footage for AI video agents. One search across Pexels, Pixabay, Wikimedia Commons, Internet Archive and NASA. Every result carries license fields (`commercial_use`, `attribution_required`, `modifiable`). `footage_inspect` returns a contact sheet of real frames so the agent can see a clip before it uses it. `footage_download` trims to an H.264 MP4 and records the shot in `footage.json` and `CREDITS.md`, so the project keeps its own footage context.
+Free footage for AI video agents. One search across Pexels, Pixabay, Wikimedia Commons, Internet Archive, Europeana and NASA. Every result carries license fields (`commercial_use`, `attribution_required`, `modifiable`). `footage_inspect` returns a contact sheet of real frames so the agent can see a clip before it uses it. `footage_download` trims to an H.264 MP4 and records the shot in `footage.json` and `CREDITS.md`, so the project keeps its own footage context.
 
-Requires Python 3.10+ and ffmpeg. Pexels and Pixabay need free API keys (`PEXELS_API_KEY`, `PIXABAY_API_KEY`); the other three need none. License detection is best effort, not legal advice. The repo contains code only and redistributes no media.
+Requires Python 3.10+ and ffmpeg. Pexels and Pixabay need free API keys (`PEXELS_API_KEY`, `PIXABAY_API_KEY`). Europeana uses the public demo key unless `EUROPEANA_API_KEY` is set; it only returns direct video files under PDM, CC0, CC BY or CC BY-SA and rechecks rights on resolve. CC BY requires attribution; CC BY-SA also requires sharing adaptations under the same license. The other three sources need no key. License detection is best effort, not legal advice. The repo contains code only and redistributes no media.
 
 MIT License.

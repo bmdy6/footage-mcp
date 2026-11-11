@@ -119,8 +119,10 @@ def _probe_duration(url: str) -> float | None:
 def inspect(clip_id: str, frames: int = 6) -> tuple[dict, bytes]:
     """Grab evenly spaced frames from the real video and tile them into one contact sheet JPEG."""
     c = resolve(clip_id)
-    url = c["video_url"]
-    if not net.is_media_host(url):
+    url = c["video_url"]  # comes from the source API, never from the caller
+    # Europeana aggregates files on provider domains; its resolver validates the
+    # direct HTTP(S) link. Keep the existing host guard for the other sources.
+    if c["source"] != "europeana" and not net.is_media_host(url):
         raise net.FetchError("video host not allowed")
     duration = c.get("duration") or _probe_duration(url)
     if duration:

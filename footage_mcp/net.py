@@ -17,6 +17,7 @@ MEDIA_HOSTS = (
     "pexels.com",
     "pixabay.com",
     "vimeocdn.com",
+    "europeana.eu",
 )
 
 
