@@ -1,0 +1,32 @@
+{
+  "responseHeader": {
+    "status": 0,
+    "QTime": 235,
+    "params": {
+      "query": "(text:ukulele OR text:ukulele OR text__reviews:ukulele) AND mediatype:audio AND (licenseurl:*publicdomain* OR licenseurl:*creativecommons*)",
+      "qin": "ukulele AND mediatype:audio AND (licenseurl:*publicdomain* OR licenseurl:*creativecommons*)",
+      "fields": "identifier,title,creator,licenseurl",
+      "wt": "json",
+      "rows": 2,
+      "start": 0
+    }
+  },
+  "response": {
+    "numFound": 3135,
+    "start": 0,
+    "docs": [
+      {
+        "creator": "RUPO",
+        "identifier": "MondayNightRupo18-71618",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-sa/4.0/",
+        "title": "Monday Night RUPO #18 - 7/16/18"
+      },
+      {
+        "creator": "Ken Stoeffler",
+        "identifier": "KenStoefflerFLATUSShow73Svenska",
+        "licenseurl": "http://creativecommons.org/licenses/by-nc-nd/2.5/",
+        "title": "FLATUS Show 73 - Svenska"
+      }
+    ]
+  }
+}

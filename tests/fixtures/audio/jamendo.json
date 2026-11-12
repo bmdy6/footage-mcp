@@ -1,0 +1,89 @@
+{
+  "headers": {
+    "status": "success",
+    "code": 0,
+    "error_message": "",
+    "warnings": "",
+    "results_count": 10
+  },
+  "results": [
+    {
+      "id": "1408401",
+      "name": "Lullaby For Phil",
+      "duration": 198,
+      "artist_id": "496168",
+      "artist_name": "Alexey Baranov",
+      "artist_idstr": "Alexey_Baranov",
+      "album_name": "Sunny Day Again: Background Music, Vol. 1",
+      "album_id": "164580",
+      "license_ccurl": "http://creativecommons.org/licenses/by-nc-nd/3.0/",
+      "position": 10,
+      "releasedate": "2017-01-08",
+      "album_image": "https://usercontent.jamendo.com?type=album&id=164580&width=300&trackid=1408401",
+      "audio": "https://prod-1.storage.jamendo.com/?trackid=1408401&format=mp31",
+      "audiodownload": "https://prod-1.storage.jamendo.com/download/track/1408401/mp32/",
+      "prourl": "https://licensing.jamendo.com/track/1408401",
+      "shorturl": "https://jamen.do/t/1408401",
+      "shareurl": "https://www.jamendo.com/track/1408401",
+      "image": "https://usercontent.jamendo.com?type=album&id=164580&width=300&trackid=1408401",
+      "musicinfo": {
+        "vocalinstrumental": "instrumental",
+        "lang": "",
+        "gender": "",
+        "acousticelectric": "",
+        "speed": "medium",
+        "tags": {
+          "genres": [
+            "jazz"
+          ],
+          "instruments": [],
+          "vartags": [
+            "ballad",
+            "backgroundmusic"
+          ]
+        }
+      },
+      "audiodownload_allowed": true
+    },
+    {
+      "id": "1933097",
+      "name": "To The Warmth",
+      "duration": 167,
+      "artist_id": "544820",
+      "artist_name": "Frank Rawel",
+      "artist_idstr": "Frank_Rawel_(4)",
+      "album_name": "To The Warmth",
+      "album_id": "477451",
+      "license_ccurl": "http://creativecommons.org/licenses/by-nc-nd/3.0/",
+      "position": 1,
+      "releasedate": "2022-03-20",
+      "album_image": "https://usercontent.jamendo.com?type=album&id=477451&width=300&trackid=1933097",
+      "audio": "https://prod-1.storage.jamendo.com/?trackid=1933097&format=mp31",
+      "audiodownload": "https://prod-1.storage.jamendo.com/download/track/1933097/mp32/",
+      "prourl": "",
+      "shorturl": "https://jamen.do/t/1933097",
+      "shareurl": "https://www.jamendo.com/track/1933097",
+      "image": "https://usercontent.jamendo.com?type=album&id=477451&width=300&trackid=1933097",
+      "musicinfo": {
+        "vocalinstrumental": "instrumental",
+        "lang": "",
+        "gender": "",
+        "acousticelectric": "",
+        "speed": "medium",
+        "tags": {
+          "genres": [
+            "jazz",
+            "bossanova"
+          ],
+          "instruments": [
+            "saxophone"
+          ],
+          "vartags": [
+            "peaceful"
+          ]
+        }
+      },
+      "audiodownload_allowed": true
+    }
+  ]
+}

@@ -22,12 +22,18 @@ CREDITS = "CREDITS.md"
 
 def search(query: str, limit: int = 12, sources: list[str] | None = None,
            min_duration: float | None = None, max_duration: float | None = None,
-           orientation: str | None = None, commercial_only: bool = False) -> dict:
+           orientation: str | None = None, commercial_only: bool = False, media: str = "video") -> dict:
     query = (query or "").strip()
     if not query:
         raise ValueError("query is empty")
     limit = max(1, min(int(limit), 50))
-    names = sources or list(SOURCES)
+    if media not in ("video", "audio"):
+        raise ValueError("media must be video or audio")
+    method = "search_audio" if media == "audio" else "search"
+    # Keep the video source set and ordering unchanged; prioritize Openverse for audio.
+    default_names = list(SOURCES) if media == "video" else sorted(SOURCES, key=lambda n: n != "openverse")
+    names = sources or ([n for n in default_names if callable(getattr(SOURCES[n], method, None))]
+                        if media == "video" else default_names)
     unknown = [n for n in names if n not in SOURCES]
     if unknown:
         raise ValueError(f"unknown sources: {unknown}; choose from {list(SOURCES)}")
@@ -35,6 +41,9 @@ def search(query: str, limit: int = 12, sources: list[str] | None = None,
     status: dict[str, str] = {}
     active = []
     for n in names:
+        if not callable(getattr(SOURCES[n], method, None)):
+            status[n] = f"skipped: {media} not supported"
+            continue
         key = SOURCES[n].needs_key()
         if key:
             status[n] = f"skipped: set {key}"
@@ -44,7 +53,7 @@ def search(query: str, limit: int = 12, sources: list[str] | None = None,
     per_source = limit if len(active) <= 1 else max(limit, 8)
     buckets: dict[str, list[dict]] = {}
     with ThreadPoolExecutor(max_workers=max(1, len(active))) as pool:
-        futures = {n: pool.submit(SOURCES[n].search, query, per_source) for n in active}
+        futures = {n: pool.submit(getattr(SOURCES[n], method), query, per_source) for n in active}
         for n, fut in futures.items():
             try:
                 found = [c for c in fut.result() if _keep(c, min_duration, max_duration, orientation, commercial_only)]
@@ -63,7 +72,8 @@ def search(query: str, limit: int = 12, sources: list[str] | None = None,
         i += 1
     results = [{k: v for k, v in c.items() if v is not None} for c in results]  # fewer tokens
     return {"query": query, "returned": len(results), "sources": status, "results": results,
-            "next_step": "footage_inspect(id) to see frames, then footage_download(id, start, duration, out_dir)"}
+            "next_step": ("footage_inspect(id) to see waveform and preview audio, then footage_download(id, start, duration, out_dir)"
+                          if media == "audio" else "footage_inspect(id) to see frames, then footage_download(id, start, duration, out_dir)")}
 
 
 def _keep(c: dict, lo, hi, orientation, commercial_only) -> bool:
@@ -90,8 +100,10 @@ def resolve(clip_id: str) -> dict:
     if key:
         raise ValueError(f"{source} needs {key}")
     c = SOURCES[source].resolve(native)
-    if not c.get("video_url"):
-        raise net.FetchError(f"no downloadable video file for {clip_id}")
+    media = c.get("media", "video")
+    available = (c.get("audio_url") or c.get("preview_url")) if media == "audio" else c.get("video_url")
+    if not available:
+        raise net.FetchError(f"no downloadable {media} file for {clip_id}")
     return c
 
 
@@ -117,8 +129,10 @@ def _probe_duration(url: str) -> float | None:
 # ---------- inspect ----------
 
 def inspect(clip_id: str, frames: int = 6) -> tuple[dict, bytes]:
-    """Grab evenly spaced frames from the real video and tile them into one contact sheet JPEG."""
+    """Return video frames as JPEG, or an audio waveform PNG and local mp3 preview."""
     c = resolve(clip_id)
+    if c.get("media") == "audio":
+        return _inspect_audio(c)
     url = c["video_url"]  # comes from the source API, never from the caller
     # Europeana aggregates files on provider domains; its resolver validates the
     # direct HTTP(S) link. Keep the existing host guard for the other sources.
@@ -164,6 +178,43 @@ def inspect(clip_id: str, frames: int = 6) -> tuple[dict, bytes]:
     return c, image
 
 
+def _check_audio_host(url: str) -> None:
+    if not net.is_media_host(url) or not url.startswith(("http://", "https://")):
+        raise net.FetchError("audio host not allowed")
+
+
+def _inspect_audio(c: dict) -> tuple[dict, bytes]:
+    """Render the waveform of the whole audio, plus a persistent 15-second preview."""
+    url = c.get("preview_url") or c["audio_url"]
+    _check_audio_host(url)
+    ff = _ffmpeg()
+    # Caller receives paths, so this directory intentionally persists like voice previews.
+    tmp = Path(tempfile.mkdtemp(prefix="footage-audio-"))
+    try:
+        audio = tmp / "source"
+        result = subprocess.run([ff, "-v", "error", "-i", url, "-vn", "-c:a", "pcm_s16le",
+                                 "-f", "wav", "-y", str(audio)], capture_output=True, text=True, timeout=300)
+        if result.returncode:
+            raise RuntimeError(f"could not read audio: {result.stderr.strip()[-400:]}")
+        c["duration"] = _probe_duration(str(audio)) or c.get("duration")
+        waveform, preview = tmp / "waveform.png", tmp / "preview.mp3"
+        subprocess.run([ff, "-v", "error", "-i", str(audio), "-filter_complex",
+                        "aformat=channel_layouts=mono,showwavespic=s=1200x240:colors=0x47a7ff",
+                        "-frames:v", "1", "-y", str(waveform)], check=True, capture_output=True, timeout=120)
+        subprocess.run([ff, "-v", "error", "-i", str(audio), "-t", "15", "-vn", "-c:a", "libmp3lame",
+                        "-b:a", "128k", "-y", str(preview)], check=True, capture_output=True, timeout=90)
+        audio.unlink()
+        c.update(waveform_path=str(waveform), preview_path=str(preview),
+                 license_warnings=warnings_for(c.get("license") or {}))
+        return c, waveform.read_bytes()
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired) as e:
+        shutil.rmtree(tmp, ignore_errors=True)
+        raise RuntimeError(f"audio inspection failed: {type(e).__name__}") from e
+    except BaseException:
+        shutil.rmtree(tmp, ignore_errors=True)
+        raise
+
+
 # ---------- download ----------
 
 def _safe(s: str) -> str:
@@ -173,6 +224,8 @@ def _safe(s: str) -> str:
 def download(clip_id: str, out_dir: str, start: float = 0, duration: float | None = None,
              note: str = "", max_width: int = 1920, keep_audio: bool = False) -> dict:
     c = resolve(clip_id)
+    if c.get("media") == "audio" and not c.get("audio_url"):
+        raise net.FetchError(f"audio download not permitted for {clip_id}; preview only")
     out = Path(out_dir).expanduser().resolve()
     out.mkdir(parents=True, exist_ok=True)
     start = max(0.0, float(start or 0))
@@ -180,14 +233,20 @@ def download(clip_id: str, out_dir: str, start: float = 0, duration: float | Non
         duration = max(0.5, min(float(duration), 600.0))
     elif not c.get("duration") or c["duration"] > 600:
         duration = 30.0  # long films: never pull a whole hour by accident
-    name = f"{c['source']}-{_safe(c['id'].split(':', 1)[1])}-{int(start)}s.mp4"
+    media = c.get("media", "video")
+    suffix = "mp3" if media == "audio" else "mp4"
+    name = f"{c['source']}-{_safe(c['id'].split(':', 1)[1])}-{int(start)}s.{suffix}"
     target = out / name
-    cmd = [_ffmpeg(), "-v", "error", "-ss", str(start), "-i", c["video_url"]]
+    cmd = [_ffmpeg(), "-v", "error", "-ss", str(start), "-i", c["audio_url" if media == "audio" else "video_url"]]
     if duration:
         cmd += ["-t", str(duration)]
-    cmd += ["-vf", f"scale='min({int(max_width)},iw)':-2", "-c:v", "libx264", "-preset", "veryfast",
+    if media == "audio":
+        _check_audio_host(c["audio_url"])
+        cmd += ["-vn", "-c:a", "libmp3lame", "-b:a", "192k"]
+    else:
+        cmd += ["-vf", f"scale='min({int(max_width)},iw)':-2", "-c:v", "libx264", "-preset", "veryfast",
             "-crf", "20", "-pix_fmt", "yuv420p", "-movflags", "+faststart"]
-    cmd += ["-c:a", "aac", "-b:a", "128k"] if keep_audio else ["-an"]
+        cmd += ["-c:a", "aac", "-b:a", "128k"] if keep_audio else ["-an"]
     r = subprocess.run(cmd + ["-y", str(target)], capture_output=True, text=True, timeout=900)
     if r.returncode != 0:
         raise RuntimeError(f"ffmpeg failed: {r.stderr.strip()[-400:]}")
@@ -197,6 +256,7 @@ def download(clip_id: str, out_dir: str, start: float = 0, duration: float | Non
         "clip_id": c["id"],
         "title": c["title"],
         "source": c["source"],
+        "media": media,
         "page_url": c["page_url"],
         "start": start,
         "duration": duration or c.get("duration"),
@@ -235,6 +295,7 @@ def library(out_dir: str) -> dict:
     out = Path(out_dir).expanduser().resolve()
     m = _load(out)
     for e in m["clips"]:
+        e.setdefault("media", "video")
         e["exists"] = (out / e["file"]).exists()
     return {"dir": str(out), "count": len(m["clips"]), "clips": m["clips"]}
 

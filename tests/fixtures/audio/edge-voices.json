@@ -1,0 +1,116 @@
+[
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)",
+    "ShortName": "zh-CN-XiaoxiaoNeural",
+    "Gender": "Female",
+    "Locale": "zh-CN",
+    "LocaleName": "Chinese (Mandarin, Simplified)",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft Xiaoxiao Online (Natural) - Chinese (Mainland)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": [
+        "News",
+        "Novel"
+      ],
+      "VoicePersonalities": [
+        "Warm"
+      ]
+    }
+  },
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoyiNeural)",
+    "ShortName": "zh-CN-XiaoyiNeural",
+    "Gender": "Female",
+    "Locale": "zh-CN",
+    "LocaleName": "Chinese (Mandarin, Simplified)",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft Xiaoyi Online (Natural) - Chinese (Mainland)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": [
+        "Cartoon",
+        "Novel"
+      ],
+      "VoicePersonalities": [
+        "Lively"
+      ]
+    }
+  },
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunjianNeural)",
+    "ShortName": "zh-CN-YunjianNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "LocaleName": "Chinese (Mandarin, Simplified)",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft Yunjian Online (Natural) - Chinese (Mainland)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": [
+        "Sports",
+        " Novel"
+      ],
+      "VoicePersonalities": [
+        "Passion"
+      ]
+    }
+  },
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiNeural)",
+    "ShortName": "zh-CN-YunxiNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "LocaleName": "Chinese (Mandarin, Simplified)",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft Yunxi Online (Natural) - Chinese (Mainland)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": [
+        "Novel"
+      ],
+      "VoicePersonalities": [
+        "Lively",
+        "Sunshine"
+      ]
+    }
+  },
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunxiaNeural)",
+    "ShortName": "zh-CN-YunxiaNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "LocaleName": "Chinese (Mandarin, Simplified)",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft Yunxia Online (Natural) - Chinese (Mainland)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": [
+        "Cartoon",
+        "Novel"
+      ],
+      "VoicePersonalities": [
+        "Cute"
+      ]
+    }
+  },
+  {
+    "Name": "Microsoft Server Speech Text to Speech Voice (zh-CN, YunyangNeural)",
+    "ShortName": "zh-CN-YunyangNeural",
+    "Gender": "Male",
+    "Locale": "zh-CN",
+    "LocaleName": "Chinese (Mandarin, Simplified)",
+    "SuggestedCodec": "audio-24khz-48kbitrate-mono-mp3",
+    "FriendlyName": "Microsoft Yunyang Online (Natural) - Chinese (Mainland)",
+    "Status": "GA",
+    "VoiceTag": {
+      "ContentCategories": [
+        "News"
+      ],
+      "VoicePersonalities": [
+        "Professional",
+        "Reliable"
+      ]
+    }
+  }
+]
