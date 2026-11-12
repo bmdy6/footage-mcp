@@ -22,7 +22,8 @@ CREDITS = "CREDITS.md"
 
 def search(query: str, limit: int = 12, sources: list[str] | None = None,
            min_duration: float | None = None, max_duration: float | None = None,
-           orientation: str | None = None, commercial_only: bool = False, media: str = "video") -> dict:
+           orientation: str | None = None, commercial_only: bool = False, media: str = "video",
+           no_attribution: bool = False) -> dict:
     query = (query or "").strip()
     if not query:
         raise ValueError("query is empty")
@@ -56,7 +57,9 @@ def search(query: str, limit: int = 12, sources: list[str] | None = None,
         futures = {n: pool.submit(getattr(SOURCES[n], method), query, per_source) for n in active}
         for n, fut in futures.items():
             try:
-                found = [c for c in fut.result() if _keep(c, min_duration, max_duration, orientation, commercial_only)]
+                # Preserve provider relevance before filtering or interleaving results.
+                found = [dict(c, source_rank=rank) for rank, c in enumerate(fut.result(), 1)
+                         if _keep(c, min_duration, max_duration, orientation, commercial_only, no_attribution)]
                 buckets[n] = found
                 status[n] = f"ok: {len(found)}"
             except Exception as e:  # one broken source must not break the others
@@ -76,7 +79,7 @@ def search(query: str, limit: int = 12, sources: list[str] | None = None,
                           if media == "audio" else "footage_inspect(id) to see frames, then footage_download(id, start, duration, out_dir)")}
 
 
-def _keep(c: dict, lo, hi, orientation, commercial_only) -> bool:
+def _keep(c: dict, lo, hi, orientation, commercial_only, no_attribution=False) -> bool:
     d = c.get("duration")
     if d is not None and ((lo and d < lo) or (hi and d > hi)):
         return False
@@ -86,6 +89,8 @@ def _keep(c: dict, lo, hi, orientation, commercial_only) -> bool:
         if actual != orientation:
             return False
     if commercial_only and (c.get("license") or {}).get("commercial_use") is not True:
+        return False
+    if no_attribution and (c.get("license") or {}).get("attribution_required") is not False:
         return False
     return True
 
@@ -307,9 +312,11 @@ def source_status() -> dict:
 # New workflows are imported lazily; existing entry points and defaults are unchanged.
 def plan(script: str, media: str = 'video', commercial_only: bool = False, candidates: int = 3,
          queries: list[list[str]] | None = None, out_dir: str = 'footage',
-         sources: list[str] | None = None, orientation: str = 'landscape') -> dict:
+         sources: list[str] | None = None, orientation: str = 'landscape',
+         no_attribution: bool = False) -> dict:
     from footage_mcp.planning import plan as run
-    return run(script, media, commercial_only, candidates, queries, out_dir, sources, orientation)
+    return run(script, media, commercial_only, candidates, queries, out_dir, sources, orientation,
+               no_attribution=no_attribution)
 
 
 def plan_apply(plan: dict | str, choices: dict[str, str], out_dir: str = 'footage') -> dict:

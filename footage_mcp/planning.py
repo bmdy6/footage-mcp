@@ -6,6 +6,7 @@ import math
 import re
 import subprocess
 import tempfile
+from itertools import zip_longest
 from pathlib import Path
 
 from footage_mcp import service as S
@@ -34,7 +35,22 @@ def _rank(c: dict, seconds: float, orientation: str) -> tuple:
     w, h = c.get('width'), c.get('height')
     actual = ('landscape' if w > h else 'portrait' if h > w else 'square') if w and h else None
     direction = 0 if c.get('media') == 'audio' or actual == orientation else 1 if actual is None else 2
-    return rights, duration, direction, abs((d or seconds) - seconds)
+    return c['source_rank'], rights, duration, direction, abs((d or seconds) - seconds)
+
+
+def _select(found: list[dict], seconds: float, orientation: str, limit: int) -> list[dict]:
+    by_rank = {}
+    for c in sorted(found, key=lambda c: _rank(c, seconds, orientation)):
+        source = c.get('source') or c['id'].split(':', 1)[0]
+        by_rank.setdefault(c['source_rank'], {}).setdefault(source, []).append(c)
+    selected = []
+    for buckets in by_rank.values():
+        # Multiple queries can yield several hits at the same source/rank.
+        # Rotate sources within a rank before considering lower-ranked hits.
+        for row in zip_longest(*buckets.values()):
+            selected.extend(sorted((c for c in row if c is not None),
+                                   key=lambda c: _rank(c, seconds, orientation)))
+    return selected[:limit]
 
 
 def _trim(c: dict, seconds: float) -> dict:
@@ -59,7 +75,8 @@ def _stack(paths: list[Path], target: Path) -> None:
 
 def plan(script: str, media: str = 'video', commercial_only: bool = False, candidates: int = 3,
          queries: list[list[str]] | None = None, out_dir: str = 'footage',
-         sources: list[str] | None = None, orientation: str = 'landscape') -> dict:
+         sources: list[str] | None = None, orientation: str = 'landscape',
+         no_attribution: bool = False) -> dict:
     sentences = [s.strip() for s in script.splitlines() if s.strip()]
     if not sentences:
         raise ValueError('script must contain at least one nonempty line')
@@ -90,11 +107,13 @@ def plan(script: str, media: str = 'video', commercial_only: bool = False, candi
             found = {}
             for q in qs:
                 result = S.search(q, limit=max(12, candidates * 3), sources=sources,
-                                  commercial_only=commercial_only, media=kind)
+                                  commercial_only=commercial_only, media=kind, no_attribution=no_attribution)
                 line['searches'].append({'query': q, 'media': kind, 'sources': result['sources']})
                 for c in result['results']:
-                    found.setdefault(c['id'], c)
-            selected = sorted(found.values(), key=lambda c: _rank(c, seconds, orientation))[:candidates]
+                    previous = found.get(c['id'])
+                    if previous is None or c['source_rank'] < previous['source_rank']:
+                        found[c['id']] = c
+            selected = _select(list(found.values()), seconds, orientation, candidates)
             for c in selected:
                 candidate = dict(c, media=kind, suggested_trim=_trim(c, seconds))
                 line['candidates'].append(candidate)
@@ -112,6 +131,11 @@ def plan(script: str, media: str = 'video', commercial_only: bool = False, candi
                     line.setdefault('excluded', []).append({
                         'id': c['id'], 'reason': 'current inspection license is not explicitly commercial'})
                     continue
+                if no_attribution and (c.get('license') or {}).get('attribution_required') is not False:
+                    line['candidates'].remove(c)
+                    line.setdefault('excluded', []).append({
+                        'id': c['id'], 'reason': 'current inspection license is not explicitly attribution-free'})
+                    continue
                 c['suggested_trim'] = _trim(c, seconds)
                 target = out / 'plan-previews' / f'line-{number:03d}-candidate-{index:02d}.jpg'
                 target.parent.mkdir(parents=True, exist_ok=True)
@@ -127,7 +151,7 @@ def plan(script: str, media: str = 'video', commercial_only: bool = False, candi
                 line['comparison_path'] = str(target)
             except (RuntimeError, OSError) as e:
                 line['comparison_error'] = str(e)
-    result = {'version': 1, 'media': media, 'commercial_only': commercial_only,
+    result = {'version': 1, 'media': media, 'commercial_only': commercial_only, 'no_attribution': no_attribution,
               'candidates_per_media': candidates, 'orientation': orientation,
               'needs_queries': any(line['needs_queries'] for line in lines), 'lines': lines,
               'plan_path': str(out / 'plan.json'),
@@ -167,6 +191,8 @@ def plan_apply(plan: dict | str, choices: dict[str, str], out_dir: str = 'footag
                 r = S.download(cid, tmp, start=start, duration=duration, note=line['sentence'])
                 if plan.get('commercial_only') and (r['entry'].get('license') or {}).get('commercial_use') is not True:
                     raise RuntimeError('current license is not explicitly commercial; not added to the project')
+                if plan.get('no_attribution') and (r['entry'].get('license') or {}).get('attribution_required') is not False:
+                    raise RuntimeError('current license is not explicitly attribution-free; not added to the project')
                 name = f"line-{int(line['line']):03d}-{Path(r['path']).name}"
                 target = out / name
                 Path(r['path']).replace(target)

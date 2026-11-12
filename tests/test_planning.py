@@ -10,7 +10,8 @@ from footage_mcp import service as S
 
 
 def clip(id='fake:one', media='video', duration=8, **kw):
-    return dict(id=id, media=media, duration=duration, width=1280, height=720,
+    # Equal source positions isolate the duration/orientation/license tie-breakers.
+    return dict(id=id, media=media, duration=duration, width=1280, height=720, source_rank=1,
                 license={'commercial_use': True, 'modifiable': True}, **kw)
 
 

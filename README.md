@@ -42,9 +42,11 @@ footage-mcp audio-marks "openverse:搜索返回的ID" --beats
 改的是错，不是你的语气。发不发，还是你说了算。
 ```
 
-`--queries` 读取 `list[list[str]]` JSON，每个非空行对应一组英文搜索描述，可覆盖规则兜底。没有有效英文词时返回 `needs_queries=true`，不会硬翻译或调用 LLM。默认每句、每类媒体 3 个候选；`--media both` 分别提供视频和音频候选。候选去重后按授权、是否够长、方向匹配度、时长差排序；`--orientation` 默认横屏偏好，不是硬过滤。`--sources` 可限制来源；缺 key 和上游错误保留在每句 `searches` 中。
+`--queries` 读取 `list[list[str]]` JSON，每个非空行对应一组英文搜索描述，可覆盖规则兜底。没有有效英文词时返回 `needs_queries=true`，不会硬翻译或调用 LLM。默认每句、每类媒体 3 个候选；`--media both` 分别提供视频和音频候选。候选去重后优先按来源内搜索名次 `source_rank` 排序，多次查询取同一素材的最好名次；同名次在来源间轮流取，再按授权、是否够长、方向匹配度、时长差排序。来源名次在过滤前记录，不代表跨来源的语义评分，仍需看图挑选。`--orientation` 默认横屏偏好，不是硬过滤。`--sources` 可限制来源；缺 key 和上游错误保留在每句 `searches` 中。
 
-规划只保存 `plan.json` 和视频抽帧图，不保存素材文件。每句 `comparison_path` 从上到下对应候选的 `comparison_row`；抽帧失败会写 `inspect_error`，不会假装已预览。音频候选不自动试听。`commercial_only` 还会在视频 inspect 后排除许可已变化的候选，并在 apply 下载后、写入项目之前再次核对当前许可。`suggested_trim` 从 0 开始，按每秒约 5 个汉字 / 2.5 个英文单词估时，再受源时长限制；这不是场景识别。可在 apply 前编辑起点和时长。apply 先校验全部选择，再逐条下载，自动将句子写入 `note`；同素材用于多句也保留独立文件与备注，部分失败会列出错误并让 CLI 返回非零退出码。
+CC BY 不管商不商用都要署名，署名可以写在视频简介里；不想署名就在 `search` / `plan` 开 `--no-attribution`（MCP：`no_attribution=true`，默认 `false`），只保留 `license.attribution_required is False` 的结果，例如 Pixabay、Pexels、CC0、公有领域；需要署名或授权不明的结果会排除。它与 `--commercial-only` 独立，可组合使用。
+
+规划只保存 `plan.json` 和视频抽帧图，不保存素材文件。每句 `comparison_path` 从上到下对应候选的 `comparison_row`；抽帧失败会写 `inspect_error`，不会假装已预览。音频候选不自动试听。`commercial_only` / `no_attribution` 还会在视频 inspect 后排除许可已变化的候选，并在 apply 下载后、写入项目之前再次核对当前许可。`suggested_trim` 从 0 开始，按每秒约 5 个汉字 / 2.5 个英文单词估时，再受源时长限制；这不是场景识别。可在 apply 前编辑起点和时长。apply 先校验全部选择，再逐条下载，自动将句子写入 `note`；同素材用于多句也保留独立文件与备注，部分失败会列出错误并让 CLI 返回非零退出码。
 
 `credits` 读取 `footage.json`，重建中文和英文两段 `CREDITS.md`，同时写 `LICENSE-RISKS.json`：商用需替换（NC / `commercial_use=false`）、不能裁剪（ND）、授权不明（含 edge-tts）、缺署名信息。风险有中英处理建议，`commercial_replace` / `commercial_review` 列出需要替换或核实的 ID。不会改 manifest；后续 download 仍按原行为生成简版署名，因此请在最终下载后再执行 credits。音色试听仍不自动写入 manifest；使用配音时需自行登记文件、音色 ID、来源及 voice API 返回的原始 license。
 
@@ -146,7 +148,7 @@ MCP 新增 `voice_list(lang="zh-CN")`、`voice_preview(voice_id, text)`，音色
 
 | 工具 | 做什么 |
 |---|---|
-| `footage_search` | 并发搜所有来源，结果交错排列；可按时长、横竖屏、能否商用过滤 |
+| `footage_search` | 并发搜所有来源，结果交错排列；可按时长、横竖屏、能否商用、是否免署名过滤 |
 | `footage_inspect` | 视频抽 1~12 帧；音频生成波形 PNG 和前 15 秒试听，返回时长与授权提醒 |
 | `footage_download` | 按 `start` / `duration` 裁剪：视频 H.264 MP4（最宽 1920，默认静音），音频 mp3；长素材默认只取 30 秒 |
 | `footage_library` | 列出这个项目已下载的素材，避免重复搜 |
@@ -219,7 +221,9 @@ footage-mcp audio-marks footage/music.mp3
 footage-mcp audio-marks "openverse:RETURNED_ID" --beats
 ```
 
-`--candidates` defaults to 3 **per sentence per media type**; `--media both` selects video and audio separately. Deduplicated candidates rank by rights, sufficient duration, orientation and duration difference. `--orientation landscape` is a preference, not a filter; `--sources` restricts providers. Per-query source errors and missing keys remain visible in `searches`. `commercial_only` is rechecked after video inspection and again after download before publication to the project; changed rights are reported as exclusions/errors. Planning saves only `plan.json` and video previews; it does not download assets or preview audio. Vertical image rows map to candidate `comparison_row`; failed inspections expose `inspect_error`.
+`--candidates` defaults to 3 **per sentence per media type**; `--media both` selects video and audio separately. Deduplicated candidates rank first by within-source search position (`source_rank`, recorded before filtering; best position across queries). At equal positions, rotate sources and break ties by rights, sufficient duration, orientation and duration difference. Source positions are not comparable semantic scores; inspect the previews before choosing. `--orientation landscape` is a preference, not a filter; `--sources` restricts providers. Per-query source errors and missing keys remain visible in `searches`. `commercial_only` / `no_attribution` are rechecked after video inspection and again after download before publication to the project; changed rights are reported as exclusions/errors. Planning saves only `plan.json` and video previews; it does not download assets or preview audio. Vertical image rows map to candidate `comparison_row`; failed inspections expose `inspect_error`.
+
+CC BY requires attribution for both commercial and noncommercial use; credits can go in the video description. To avoid attribution, enable `--no-attribution` on `search` / `plan` (MCP: `no_attribution=true`, default `false`). Only explicit `license.attribution_required=false` results remain, such as Pixabay, Pexels, CC0 and public-domain assets; required or unknown attribution is excluded. This filter is independent of `--commercial-only` and can be combined with it.
 
 Suggested trims start at zero and estimate speech at 5 Chinese characters / 2.5 English words per second, capped by available clip duration. They are not scene detection; edit `suggested_trim` before applying. Choices map 1-based nonempty script line numbers to IDs. All choices are validated before any download. Apply preserves each sentence in `note`, keeps separate files for repeated clips, and reports partial failures (nonzero CLI exit).
 

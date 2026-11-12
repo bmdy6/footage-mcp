@@ -27,7 +27,7 @@ def _dump(obj) -> str:
 def footage_search(query: str, limit: int = 12, sources: list[str] | None = None,
                    min_duration: float | None = None, max_duration: float | None = None,
                    orientation: str | None = None, commercial_only: bool = False,
-                   media: Literal["video", "audio"] = "video") -> str:
+                   media: Literal["video", "audio"] = "video", no_attribution: bool = False) -> str:
     """Search video (default) or audio across several libraries at once, with license info on every result.
 
     Use it to find B-roll and documentary-style shots for a narrated video: one shot per
@@ -56,8 +56,10 @@ def footage_search(query: str, limit: int = 12, sources: list[str] | None = None
         min_duration / max_duration: seconds, applied when the source reports duration.
         orientation: landscape | portrait | square.
         commercial_only: drop results not clearly licensed for commercial use.
+        no_attribution: retain only explicit attribution_required=false results.
     """
-    return _dump(S.search(query, limit, sources, min_duration, max_duration, orientation, commercial_only, media=media))
+    return _dump(S.search(query, limit, sources, min_duration, max_duration, orientation, commercial_only,
+                          media=media, no_attribution=no_attribution))
 
 
 @mcp.tool()
@@ -127,14 +129,17 @@ async def voice_preview(voice_id: str, text: str) -> str:
 def footage_plan(script: str, media: Literal["video", "audio", "both"] = "video",
                  commercial_only: bool = False, candidates: int = 3,
                  queries: list[list[str]] | None = None, out_dir: str = "footage",
-                 sources: list[str] | None = None, orientation: str = "landscape") -> str:
+                 sources: list[str] | None = None, orientation: str = "landscape",
+                 no_attribution: bool = False) -> str:
     """Match each nonempty script line to up to 3 candidates per media type; no asset downloads.
     Supply English query lists per line for Chinese scripts (no automatic translation).
-    Returns plan.json with duration/orientation/license-ranked candidates, suggested trims,
+    Returns plan.json ranked by source search position, then license/duration/orientation, with suggested trims,
     local video comparison sheets (rows map to comparison_row), and any inspection errors.
     Read the local comparison images before choosing; trims are estimates, not scene detection.
+    no_attribution retains only explicit attribution_required=false results (default false).
     """
-    return _dump(S.plan(script, media, commercial_only, candidates, queries, out_dir, sources, orientation))
+    return _dump(S.plan(script, media, commercial_only, candidates, queries, out_dir, sources, orientation,
+                        no_attribution=no_attribution))
 
 
 @mcp.tool()

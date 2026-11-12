@@ -35,7 +35,7 @@ def test_mcp_workflow_dispatch():
     from footage_mcp import mcp_server as server
     with mock.patch.object(S, 'plan', return_value={'needs_queries': True}) as plan:
         assert json.loads(server.footage_plan('你好'))['needs_queries']
-        plan.assert_called_once_with('你好', 'video', False, 3, None, 'footage', None, 'landscape')
+        plan.assert_called_once_with('你好', 'video', False, 3, None, 'footage', None, 'landscape', no_attribution=False)
     with mock.patch.object(S, 'plan_apply', return_value={'errors': []}) as apply:
         server.footage_plan_apply('plan.json', {'1': 'fake:a'})
         apply.assert_called_once_with('plan.json', {'1': 'fake:a'}, 'footage')

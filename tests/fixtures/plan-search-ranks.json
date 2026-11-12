@@ -1,0 +1,10 @@
+{
+  "commons": [
+    {"id": "commons:lyon-parking", "source": "commons", "title": "Parking in Lyon", "duration": 8, "width": 1280, "height": 720, "license": {"commercial_use": true, "modifiable": true, "attribution_required": false}},
+    {"id": "commons:unrelated", "source": "commons", "title": "Other unrelated footage", "duration": 3, "width": 1280, "height": 720, "license": {"commercial_use": true, "modifiable": true, "attribution_required": false}}
+  ],
+  "pixabay": [
+    {"id": "pixabay:typing", "source": "pixabay", "title": "Typing on a phone", "duration": 20, "width": 1280, "height": 720, "license": {"commercial_use": true, "modifiable": true, "attribution_required": false}},
+    {"id": "pixabay:phone", "source": "pixabay", "title": "Using a phone", "duration": 30, "width": 1280, "height": 720, "license": {"commercial_use": true, "modifiable": true, "attribution_required": false}}
+  ]
+}

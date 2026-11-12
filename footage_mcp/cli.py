@@ -29,6 +29,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--max-duration", type=float)
     s.add_argument("--orientation", choices=["landscape", "portrait", "square"])
     s.add_argument("--commercial-only", action="store_true")
+    s.add_argument("--no-attribution", action="store_true", help="only explicitly attribution-free results")
 
     i = sub.add_parser("inspect", help="save video frames or audio waveform and preview")
     i.add_argument("clip_id")
@@ -58,6 +59,7 @@ def main(argv: list[str] | None = None) -> int:
     plan.add_argument("--queries", help="JSON file: list of English query lists, one per nonempty line")
     plan.add_argument("--media", choices=["video", "audio", "both"], default="video")
     plan.add_argument("--commercial-only", action="store_true")
+    plan.add_argument("--no-attribution", action="store_true", help="only explicitly attribution-free results")
     plan.add_argument("--candidates", type=int, default=3, help="per line, per media type")
     plan.add_argument("--sources", help="comma-separated source names")
     plan.add_argument("--orientation", choices=["landscape", "portrait", "square"], default="landscape")
@@ -81,7 +83,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if a.cmd == "search":
             _print(S.search(a.query, a.limit, a.sources.split(",") if a.sources else None,
-                            a.min_duration, a.max_duration, a.orientation, a.commercial_only, media=a.media))
+                            a.min_duration, a.max_duration, a.orientation, a.commercial_only,
+                            media=a.media, no_attribution=a.no_attribution))
         elif a.cmd == "inspect":
             meta, jpeg = S.inspect(a.clip_id, a.frames)
             audio = meta.get("media") == "audio"
@@ -105,7 +108,7 @@ def main(argv: list[str] | None = None) -> int:
             _print(S.plan(Path(a.script).expanduser().read_text("utf-8"), media=a.media,
                           commercial_only=a.commercial_only, candidates=a.candidates, queries=queries,
                           out_dir=a.out_dir, sources=a.sources.split(",") if a.sources else None,
-                          orientation=a.orientation))
+                          orientation=a.orientation, no_attribution=a.no_attribution))
         elif a.cmd == "plan-apply":
             result = S.plan_apply(a.plan, json.loads(Path(a.choices).expanduser().read_text("utf-8")), a.out_dir)
             _print(result)

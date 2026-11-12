@@ -1,0 +1,377 @@
+{
+  "script": [
+    "typing on phone at night",
+    "person smiling at laptop"
+  ],
+  "sources": [
+    "pixabay",
+    "commons"
+  ],
+  "runs": [
+    {
+      "mode": "default",
+      "no_attribution": false,
+      "lines": [
+        {
+          "line": 1,
+          "sentence": "typing on phone at night",
+          "queries": [
+            "typing phone night"
+          ],
+          "searches": [
+            {
+              "query": "typing phone night",
+              "media": "video",
+              "sources": {
+                "pixabay": "ok: 12",
+                "commons": "ok: 2"
+              }
+            }
+          ],
+          "comparison_created": true,
+          "candidates": [
+            {
+              "id": "commons:File:Manœuvre de stationnement de type créneau à Lyon en janvier 2018.webm",
+              "title": "Manœuvre de stationnement de type créneau à Lyon en janvier 2018",
+              "page_url": "https://commons.wikimedia.org/wiki/File:Man%C5%93uvre_de_stationnement_de_type_cr%C3%A9neau_%C3%A0_Lyon_en_janvier_2018.webm",
+              "source_rank": 1,
+              "duration": 11.05,
+              "license": {
+                "name": "CC0",
+                "url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "Benoît Prieur, CC0, via Wikimedia Commons",
+                "notes": null
+              },
+              "inspect_error": "could not read any frame from the video"
+            },
+            {
+              "id": "pixabay:3174",
+              "title": "computer keyboard, typing, hands, female, keyboard, computer, technology, business, office, internet, type, key, communication, pc, information, white, working, letter, fingers",
+              "page_url": "https://pixabay.com/videos/id-3174/",
+              "source_rank": 1,
+              "duration": 12,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "Coverr-Free-Footage via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                1.0,
+                3.0,
+                5.0,
+                7.0,
+                9.0,
+                11.0
+              ]
+            },
+            {
+              "id": "pixabay:202987",
+              "title": "phone, smartphone, mobile, portable, screen, digital, communication, texting, business, work",
+              "page_url": "https://pixabay.com/videos/id-202987/",
+              "source_rank": 2,
+              "duration": 15,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "Natures_Embrace via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                1.25,
+                3.75,
+                6.25,
+                8.75,
+                11.25,
+                13.75
+              ]
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "sentence": "person smiling at laptop",
+          "queries": [
+            "person smiling laptop"
+          ],
+          "searches": [
+            {
+              "query": "person smiling laptop",
+              "media": "video",
+              "sources": {
+                "pixabay": "ok: 12",
+                "commons": "ok: 1"
+              }
+            }
+          ],
+          "comparison_created": true,
+          "candidates": [
+            {
+              "id": "pixabay:293083",
+              "title": "asian woman, coffee break, working from home, remote work, happy moment, cozy living room, home office, woman with mug, work and relax, peaceful break, smiling woman, casual work, laptop at home, coffee time, digital lifestyle, modern home, relaxed worker, productivity break, online work, casual style, personal workspace, indoor lifestyle, happy freelancer, comfortable home, morning routine",
+              "page_url": "https://pixabay.com/videos/id-293083/",
+              "source_rank": 1,
+              "duration": 20,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "RainMeditateHub via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                1.67,
+                5.0,
+                8.33,
+                11.67,
+                15.0,
+                18.33
+              ]
+            },
+            {
+              "id": "commons:File:Kecerdasan Emosional (EI)-Salah satu hal yang disepelekan para peneliti!.webm",
+              "title": "Kecerdasan Emosional (EI)-Salah satu hal yang disepelekan para peneliti!",
+              "page_url": "https://commons.wikimedia.org/wiki/File:Kecerdasan_Emosional_(EI)-Salah_satu_hal_yang_disepelekan_para_peneliti!.webm",
+              "source_rank": 1,
+              "duration": 157.24,
+              "license": {
+                "name": "CC BY-SA 4.0",
+                "url": "https://creativecommons.org/licenses/by-sa/4.0",
+                "commercial_use": true,
+                "attribution_required": true,
+                "modifiable": true,
+                "attribution": "Pincuprum, CC BY-SA 4.0, via Wikimedia Commons",
+                "notes": null
+              },
+              "inspect_error": "could not read any frame from the video"
+            },
+            {
+              "id": "pixabay:10822",
+              "title": "keyboard, typing, writing, notebook, computer, technology, laptop, business, internet, work, office, person, hand, communication, working, using, connection, pc, information, desktop, web, workplace",
+              "page_url": "https://pixabay.com/videos/id-10822/",
+              "source_rank": 2,
+              "duration": 12,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "Coverr-Free-Footage via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                1.0,
+                3.0,
+                5.0,
+                7.0,
+                9.0,
+                11.0
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "no-attribution",
+      "no_attribution": true,
+      "lines": [
+        {
+          "line": 1,
+          "sentence": "typing on phone at night",
+          "queries": [
+            "typing phone night"
+          ],
+          "searches": [
+            {
+              "query": "typing phone night",
+              "media": "video",
+              "sources": {
+                "pixabay": "ok: 12",
+                "commons": "ok: 1"
+              }
+            }
+          ],
+          "comparison_created": true,
+          "candidates": [
+            {
+              "id": "commons:File:Manœuvre de stationnement de type créneau à Lyon en janvier 2018.webm",
+              "title": "Manœuvre de stationnement de type créneau à Lyon en janvier 2018",
+              "page_url": "https://commons.wikimedia.org/wiki/File:Man%C5%93uvre_de_stationnement_de_type_cr%C3%A9neau_%C3%A0_Lyon_en_janvier_2018.webm",
+              "source_rank": 1,
+              "duration": 11.05,
+              "license": {
+                "name": "CC0",
+                "url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "Benoît Prieur, CC0, via Wikimedia Commons",
+                "notes": null
+              },
+              "inspect_error": "could not read any frame from the video"
+            },
+            {
+              "id": "pixabay:3174",
+              "title": "computer keyboard, typing, hands, female, keyboard, computer, technology, business, office, internet, type, key, communication, pc, information, white, working, letter, fingers",
+              "page_url": "https://pixabay.com/videos/id-3174/",
+              "source_rank": 1,
+              "duration": 12,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "Coverr-Free-Footage via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                1.0,
+                3.0,
+                5.0,
+                7.0,
+                9.0,
+                11.0
+              ]
+            },
+            {
+              "id": "pixabay:202987",
+              "title": "phone, smartphone, mobile, portable, screen, digital, communication, texting, business, work",
+              "page_url": "https://pixabay.com/videos/id-202987/",
+              "source_rank": 2,
+              "duration": 15,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "Natures_Embrace via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                1.25,
+                3.75,
+                6.25,
+                8.75,
+                11.25,
+                13.75
+              ]
+            }
+          ]
+        },
+        {
+          "line": 2,
+          "sentence": "person smiling at laptop",
+          "queries": [
+            "person smiling laptop"
+          ],
+          "searches": [
+            {
+              "query": "person smiling laptop",
+              "media": "video",
+              "sources": {
+                "pixabay": "ok: 12",
+                "commons": "ok: 0"
+              }
+            }
+          ],
+          "comparison_created": true,
+          "candidates": [
+            {
+              "id": "pixabay:293083",
+              "title": "asian woman, coffee break, working from home, remote work, happy moment, cozy living room, home office, woman with mug, work and relax, peaceful break, smiling woman, casual work, laptop at home, coffee time, digital lifestyle, modern home, relaxed worker, productivity break, online work, casual style, personal workspace, indoor lifestyle, happy freelancer, comfortable home, morning routine",
+              "page_url": "https://pixabay.com/videos/id-293083/",
+              "source_rank": 1,
+              "duration": 20,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "RainMeditateHub via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                1.67,
+                5.0,
+                8.33,
+                11.67,
+                15.0,
+                18.33
+              ]
+            },
+            {
+              "id": "pixabay:10822",
+              "title": "keyboard, typing, writing, notebook, computer, technology, laptop, business, internet, work, office, person, hand, communication, working, using, connection, pc, information, desktop, web, workplace",
+              "page_url": "https://pixabay.com/videos/id-10822/",
+              "source_rank": 2,
+              "duration": 12,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "Coverr-Free-Footage via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                1.0,
+                3.0,
+                5.0,
+                7.0,
+                9.0,
+                11.0
+              ]
+            },
+            {
+              "id": "pixabay:171044",
+              "title": "man, smile, smiling, happy, male, person, outdoors, portrait",
+              "page_url": "https://pixabay.com/videos/id-171044/",
+              "source_rank": 3,
+              "duration": 8,
+              "license": {
+                "name": "Pixabay Content License",
+                "url": "https://pixabay.com/service/license-summary/",
+                "commercial_use": true,
+                "attribution_required": false,
+                "modifiable": true,
+                "attribution": "magicmore via Pixabay",
+                "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+              },
+              "frame_times": [
+                0.67,
+                2.0,
+                3.33,
+                4.67,
+                6.0,
+                7.33
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "recorded_at": "2026-11-12T06:07:46.371466+00:00",
+  "commands": [
+    "footage-mcp plan script.txt --sources pixabay,commons --out-dir default",
+    "footage-mcp plan script.txt --sources pixabay,commons --no-attribution --out-dir no-attribution"
+  ],
+  "environment": "PIXABAY_API_KEY injected from ai-vault; SSL_CERT_FILE=/etc/ssl/cert.pem (verification enabled)"
+}
