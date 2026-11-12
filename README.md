@@ -1,12 +1,60 @@
 # footage-mcp
 
-给 AI 做视频用的免费素材库：搜索视频、背景音乐和音效，先预览再下载，每条素材带授权信息，下载记录写进项目。另提供现成配音音色的查询和试听。
+从文案到可发布素材：按句搜索视频、音乐和音效，看真实抽帧选素材，再下载、导出中英署名与授权风险。发布前仍需核实原始许可。现有搜索和下载工具的默认行为不变。
 
 [English](#english)
 
 <img src="docs/inspect-nasa.jpg" alt="NASA 国际空间站视频的 6 帧拼图，由 footage_inspect 从真实视频里抽取" width="640">
 
 `footage_inspect` 从真实视频里抽帧拼成一张图，AI 看完再决定用哪一段。
+
+## 和单一来源搜索封装相比
+
+| 能力 | 单一来源搜索封装 | footage-mcp |
+|---|---|---|
+| 多源 | 一个提供方 | 聚合多个来源 |
+| 抽帧 | 链接 / 元数据 | 先看真实抽帧再选 |
+| 授权 manifest | 提供方元数据 | 每个文件保留授权、来源、脚本备注 |
+| 音频 | 取决于提供方 | 音乐、音效、可选音色试听 |
+| 按稿配素材 | 逐次搜索 | 每句候选与对比拼图 |
+| 署名导出 | 手动整理 | 中英署名 + 授权风险 JSON |
+
+## 按稿配素材、署名与音频剪辑点
+
+以 [StylePolish 30 秒宣传片](https://github.com/bmdy6/stylepolish#readme) 为场景，使用 Issue #4 的四句配音稿。以下文件可直接运行：
+
+```sh
+footage-mcp plan docs/examples/stylepolish-script.txt \
+  --queries docs/examples/stylepolish-queries.json --commercial-only --out-dir footage
+# 打开 footage/plan.json 中每句的 comparison_path，再把选中的 ID 写进 choices.json
+# 格式：{"1":"pixabay:搜索返回的ID","2":"pixabay:搜索返回的ID"}
+footage-mcp plan-apply footage/plan.json --choices choices.json --out-dir footage
+footage-mcp credits --out-dir footage
+footage-mcp audio-marks footage/music.mp3
+pip install 'footage-mcp[beats]'  # 可选
+footage-mcp audio-marks "openverse:搜索返回的ID" --beats
+```
+
+```text
+消息打完，总怕有错别字？
+停笔一秒半，StylePolish 自动帮你看一遍。
+错字标红，不通顺的标黄，点开就能改。
+改的是错，不是你的语气。发不发，还是你说了算。
+```
+
+`--queries` 读取 `list[list[str]]` JSON，每个非空行对应一组英文搜索描述，可覆盖规则兜底。没有有效英文词时返回 `needs_queries=true`，不会硬翻译或调用 LLM。默认每句、每类媒体 3 个候选；`--media both` 分别提供视频和音频候选。候选去重后优先按来源内搜索名次 `source_rank` 排序，多次查询取同一素材的最好名次；同名次在来源间轮流取，再按授权、是否够长、方向匹配度、时长差排序。来源名次在过滤前记录，不代表跨来源的语义评分，仍需看图挑选。`--orientation` 默认横屏偏好，不是硬过滤。`--sources` 可限制来源；缺 key 和上游错误保留在每句 `searches` 中。
+
+CC BY 不管商不商用都要署名，署名可以写在视频简介里；不想署名就在 `search` / `plan` 开 `--no-attribution`（MCP：`no_attribution=true`，默认 `false`），只保留 `license.attribution_required is False` 的结果，例如 Pixabay、Pexels、CC0、公有领域；需要署名或授权不明的结果会排除。它与 `--commercial-only` 独立，可组合使用。
+
+规划只保存 `plan.json` 和视频抽帧图，不保存素材文件。每句 `comparison_path` 从上到下对应候选的 `comparison_row`；抽帧失败会写 `inspect_error`，不会假装已预览。音频候选不自动试听。`commercial_only` / `no_attribution` 还会在视频 inspect 后排除许可已变化的候选，并在 apply 下载后、写入项目之前再次核对当前许可。`suggested_trim` 从 0 开始，按每秒约 5 个汉字 / 2.5 个英文单词估时，再受源时长限制；这不是场景识别。可在 apply 前编辑起点和时长。apply 先校验全部选择，再逐条下载，自动将句子写入 `note`；同素材用于多句也保留独立文件与备注，部分失败会列出错误并让 CLI 返回非零退出码。
+
+`credits` 读取 `footage.json`，重建中文和英文两段 `CREDITS.md`，同时写 `LICENSE-RISKS.json`：商用需替换（NC / `commercial_use=false`）、不能裁剪（ND）、授权不明（含 edge-tts）、缺署名信息。风险有中英处理建议，`commercial_replace` / `commercial_review` 列出需要替换或核实的 ID。不会改 manifest；后续 download 仍按原行为生成简版署名，因此请在最终下载后再执行 credits。音色试听仍不自动写入 manifest；使用配音时需自行登记文件、音色 ID、来源及 voice API 返回的原始 license。
+
+`audio-marks` 接受本地文件或音频 clip ID，仅用 ffmpeg 的 `silencedetect` / `ebur128` 返回静音段、LUFS、响度范围、真峰值和进出点（秒）。建议点只去掉首尾静音，全静音返回空点；不自动剪辑或渲染。`--silence-db` 默认 -35、`--min-silence` 默认 0.3 秒；可选 `--beats` 用 librosa，未安装时跳过并提示安装，基础功能不依赖 voice / beats。
+
+<img src="docs/plan-stylepolish-line-1.jpg" alt="StylePolish 第一句的三个真实候选：从上到下与 plan 的 comparison_row 对应" width="640">
+
+真实 CLI 验收与候选来源见 [Issue #4 实测记录](docs/issue-4-acceptance.md)。素材只用于比较，不代表成片已采用。
 
 ## 为什么要先看帧
 
@@ -100,10 +148,14 @@ MCP 新增 `voice_list(lang="zh-CN")`、`voice_preview(voice_id, text)`，音色
 
 | 工具 | 做什么 |
 |---|---|
-| `footage_search` | 并发搜所有来源，结果交错排列；可按时长、横竖屏、能否商用过滤 |
+| `footage_search` | 并发搜所有来源，结果交错排列；可按时长、横竖屏、能否商用、是否免署名过滤 |
 | `footage_inspect` | 视频抽 1~12 帧；音频生成波形 PNG 和前 15 秒试听，返回时长与授权提醒 |
 | `footage_download` | 按 `start` / `duration` 裁剪：视频 H.264 MP4（最宽 1920，默认静音），音频 mp3；长素材默认只取 30 秒 |
 | `footage_library` | 列出这个项目已下载的素材，避免重复搜 |
+| `footage_plan` | 按稿搜索与排序候选，每句生成视频比较拼图，写 plan.json |
+| `footage_plan_apply` | 按 1-based 句子编号 → 候选 ID 下载，自动填 note |
+| `footage_credits` | 中英署名及 NC / ND / 不明授权 / 缺署名报告 |
+| `audio_marks` | 静音、响度、建议进出点与可选节拍 |
 
 ## 素材就是上下文
 
@@ -128,7 +180,7 @@ MCP 新增 `voice_list(lang="zh-CN")`、`voice_preview(voice_id, text)`，音色
 
 ## 授权说明
 
-授权字段是按许可证名称和链接自动判断的，不构成法律意见。`commercial_use` 为 `null` 表示没认出来，发布前请打开 `page_url` 自己核对。仓库只放代码，不存、不转发任何素材文件；素材版权归原作者和平台。
+授权字段是按许可证名称和链接自动判断的，不构成法律意见。`commercial_use` 为 `null` 表示没认出来，发布前请打开 `page_url` 自己核对。仓库保留代码和预览图，不存、不转发完整视频或音频文件；素材版权归原作者和平台。
 
 ## 开发
 
@@ -142,9 +194,46 @@ python -m build
 
 ## English
 
-Free footage for AI video agents. One search across Pexels, Pixabay, Wikimedia Commons, Internet Archive, Europeana and NASA. Every result carries license fields (`commercial_use`, `attribution_required`, `modifiable`). `footage_inspect` returns a contact sheet of real frames so the agent can see a clip before it uses it. `footage_download` trims to an H.264 MP4 and records the shot in `footage.json` and `CREDITS.md`, so the project keeps its own footage context.
+From script to publishable assets: match each sentence to video, music or sound candidates, compare real frames, download your choices, and export bilingual credits with a license-risk report. Verify original rights before publication. Existing search/download defaults remain unchanged.
 
-Requires Python 3.10+ and ffmpeg. Pexels and Pixabay need free API keys (`PEXELS_API_KEY`, `PIXABAY_API_KEY`). Europeana uses the public demo key unless `EUROPEANA_API_KEY` is set; it only returns direct video files under PDM, CC0, CC BY or CC BY-SA and rechecks rights on resolve. CC BY requires attribution; CC BY-SA also requires sharing adaptations under the same license. Commons, Archive and NASA need no key. License detection is best effort, not legal advice. The repo contains code only and redistributes no media.
+| Capability | Single-source search wrapper | footage-mcp |
+|---|---|---|
+| Multiple sources | One provider | Aggregated search |
+| Real-frame inspection | Links / metadata | Contact sheets before selection |
+| License manifest | Provider metadata | Per-file rights, origin and script note |
+| Audio | Provider-dependent | Music, sound effects and optional voice previews |
+| Script planning | Individual searches | Per-line candidates and comparison sheets |
+| Credits export | Manual | Chinese/English credits + license-risk JSON |
+
+Requires Python 3.10+ and ffmpeg. Pexels and Pixabay need free API keys (`PEXELS_API_KEY`, `PIXABAY_API_KEY`). Europeana uses the public demo key unless `EUROPEANA_API_KEY` is set; it only returns direct video files under PDM, CC0, CC BY or CC BY-SA and rechecks rights on resolve. CC BY requires attribution; CC BY-SA also requires sharing adaptations under the same license. Commons, Archive and NASA need no key. License detection is best effort, not legal advice. The repo contains code and preview images, not complete video or audio files.
+
+### Plan a script and export publication credits
+
+Use the four-line Chinese narration in `docs/examples/stylepolish-script.txt`, based on the [StylePolish promo](https://github.com/bmdy6/stylepolish#readme) scenario. `docs/examples/stylepolish-queries.json` supplies English visual descriptions, one list per nonempty sentence. No LLM or automatic translation is used: without useful English words, the rule fallback returns `needs_queries=true`.
+
+```sh
+footage-mcp plan docs/examples/stylepolish-script.txt --queries docs/examples/stylepolish-queries.json --commercial-only --out-dir footage
+# Inspect comparison_path images, then save {"1":"source:id","2":"source:id"} in choices.json.
+footage-mcp plan-apply footage/plan.json --choices choices.json --out-dir footage
+footage-mcp credits --out-dir footage
+footage-mcp audio-marks footage/music.mp3
+# Optional: pip install 'footage-mcp[beats]'
+footage-mcp audio-marks "openverse:RETURNED_ID" --beats
+```
+
+`--candidates` defaults to 3 **per sentence per media type**; `--media both` selects video and audio separately. Deduplicated candidates rank first by within-source search position (`source_rank`, recorded before filtering; best position across queries). At equal positions, rotate sources and break ties by rights, sufficient duration, orientation and duration difference. Source positions are not comparable semantic scores; inspect the previews before choosing. `--orientation landscape` is a preference, not a filter; `--sources` restricts providers. Per-query source errors and missing keys remain visible in `searches`. `commercial_only` / `no_attribution` are rechecked after video inspection and again after download before publication to the project; changed rights are reported as exclusions/errors. Planning saves only `plan.json` and video previews; it does not download assets or preview audio. Vertical image rows map to candidate `comparison_row`; failed inspections expose `inspect_error`.
+
+CC BY requires attribution for both commercial and noncommercial use; credits can go in the video description. To avoid attribution, enable `--no-attribution` on `search` / `plan` (MCP: `no_attribution=true`, default `false`). Only explicit `license.attribution_required=false` results remain, such as Pixabay, Pexels, CC0 and public-domain assets; required or unknown attribution is excluded. This filter is independent of `--commercial-only` and can be combined with it.
+
+Suggested trims start at zero and estimate speech at 5 Chinese characters / 2.5 English words per second, capped by available clip duration. They are not scene detection; edit `suggested_trim` before applying. Choices map 1-based nonempty script line numbers to IDs. All choices are validated before any download. Apply preserves each sentence in `note`, keeps separate files for repeated clips, and reports partial failures (nonzero CLI exit).
+
+`credits` reads the manifest without modifying it, writes Chinese/English `CREDITS.md`, and generates `LICENSE-RISKS.json` with bilingual actions: replace for commercial use (NC / false), do not trim (ND), unclear rights (including edge-tts), or missing attribution. `commercial_replace` and `commercial_review` identify affected IDs. Run credits after final downloads: legacy download still regenerates its original simple credits. Voice previews remain outside the manifest; register any voice actually used with its file, voice ID, source and original API license fields.
+
+`audio-marks` accepts a local file or audio clip ID. Only ffmpeg is required for silence (`silencedetect`), EBU R128 integrated LUFS, loudness range, true peak and suggested endpoints in seconds. Endpoints remove leading/trailing silence only; fully silent audio has no suggested cut. Defaults: `--silence-db -35`, `--min-silence 0.3`. Optional `--beats` uses librosa; a missing extra is skipped with an install hint. No editing/rendering or voice/beat dependencies in the base install. MCP equivalents: `footage_plan`, `footage_plan_apply`, `footage_credits`, `audio_marks`.
+
+<img src="docs/plan-stylepolish-line-1.jpg" alt="Three actual candidates for StylePolish line 1, top to bottom in comparison_row order" width="640">
+
+See [live acceptance and candidate provenance](docs/issue-4-acceptance.md). Comparison candidates are not a claim of final adoption.
 
 ### Find audio
 

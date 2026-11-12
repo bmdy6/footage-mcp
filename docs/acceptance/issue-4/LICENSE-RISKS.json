@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "count": 3,
+  "risks": [
+    {
+      "clip_id": "edge:zh-CN-XiaoyiNeural",
+      "file": "edge-Xiaoyi-preview.mp3",
+      "title": "Xiaoyi Chinese narration preview",
+      "codes": [
+        "commercial_replace",
+        "unknown_license",
+        "missing_attribution"
+      ],
+      "actions_zh": "商用需替换，或另行取得明确商业授权；授权不明；发布前核实原始授权，商用前取得明确许可或替换；缺署名信息；发布前补齐作者、标题、来源和许可链接",
+      "actions_en": "Replace for commercial use, or obtain explicit commercial clearance; Unclear rights; verify the original license before publishing and clear or replace before commercial use; Missing credit information; complete author, title, source and license link before publication"
+    }
+  ],
+  "commercial_replace": [
+    "edge:zh-CN-XiaoyiNeural"
+  ],
+  "commercial_review": [
+    "edge:zh-CN-XiaoyiNeural"
+  ],
+  "credits_file": "CREDITS.md",
+  "risks_file": "LICENSE-RISKS.json"
+}

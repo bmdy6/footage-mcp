@@ -1,4 +1,4 @@
-"""Command line: footage-mcp search|inspect|download|library|sources|voices|voice-preview|mcp"""
+"""Command-line adapters for search, previews, downloads and script workflows."""
 from __future__ import annotations
 
 import argparse
@@ -29,6 +29,7 @@ def main(argv: list[str] | None = None) -> int:
     s.add_argument("--max-duration", type=float)
     s.add_argument("--orientation", choices=["landscape", "portrait", "square"])
     s.add_argument("--commercial-only", action="store_true")
+    s.add_argument("--no-attribution", action="store_true", help="only explicitly attribution-free results")
 
     i = sub.add_parser("inspect", help="save video frames or audio waveform and preview")
     i.add_argument("clip_id")
@@ -53,6 +54,28 @@ def main(argv: list[str] | None = None) -> int:
     vp.add_argument("text")
     vp.add_argument("--out-dir")
 
+    plan = sub.add_parser("plan", help="match each script line to candidates and comparison sheets")
+    plan.add_argument("script", help="UTF-8 script file, one sentence per line")
+    plan.add_argument("--queries", help="JSON file: list of English query lists, one per nonempty line")
+    plan.add_argument("--media", choices=["video", "audio", "both"], default="video")
+    plan.add_argument("--commercial-only", action="store_true")
+    plan.add_argument("--no-attribution", action="store_true", help="only explicitly attribution-free results")
+    plan.add_argument("--candidates", type=int, default=3, help="per line, per media type")
+    plan.add_argument("--sources", help="comma-separated source names")
+    plan.add_argument("--orientation", choices=["landscape", "portrait", "square"], default="landscape")
+    plan.add_argument("--out-dir", default="footage")
+    apply = sub.add_parser("plan-apply", help="download chosen candidates, recording each sentence in note")
+    apply.add_argument("plan", help="plan.json path")
+    apply.add_argument("--choices", required=True, help='JSON file: {"1": "source:id", "2": "source:id"}')
+    apply.add_argument("--out-dir", default="footage")
+    credits = sub.add_parser("credits", help="export bilingual credits and LICENSE-RISKS.json")
+    credits.add_argument("--out-dir", default="footage")
+    marks = sub.add_parser("audio-marks", help="measure silence, loudness and suggested audio endpoints")
+    marks.add_argument("audio", help="local file or audio clip ID")
+    marks.add_argument("--beats", action="store_true", help="optional librosa beat detection")
+    marks.add_argument("--silence-db", type=float, default=-35)
+    marks.add_argument("--min-silence", type=float, default=.3)
+
     sub.add_parser("sources", help="show which sources are ready")
     sub.add_parser("mcp", help="run the stdio MCP server")
 
@@ -60,7 +83,8 @@ def main(argv: list[str] | None = None) -> int:
     try:
         if a.cmd == "search":
             _print(S.search(a.query, a.limit, a.sources.split(",") if a.sources else None,
-                            a.min_duration, a.max_duration, a.orientation, a.commercial_only, media=a.media))
+                            a.min_duration, a.max_duration, a.orientation, a.commercial_only,
+                            media=a.media, no_attribution=a.no_attribution))
         elif a.cmd == "inspect":
             meta, jpeg = S.inspect(a.clip_id, a.frames)
             audio = meta.get("media") == "audio"
@@ -79,6 +103,21 @@ def main(argv: list[str] | None = None) -> int:
             _print(asyncio.run(voice_preview(a.voice_id, a.text, a.out_dir)))
         elif a.cmd == "sources":
             _print(S.source_status())
+        elif a.cmd == "plan":
+            queries = json.loads(Path(a.queries).expanduser().read_text("utf-8")) if a.queries else None
+            _print(S.plan(Path(a.script).expanduser().read_text("utf-8"), media=a.media,
+                          commercial_only=a.commercial_only, candidates=a.candidates, queries=queries,
+                          out_dir=a.out_dir, sources=a.sources.split(",") if a.sources else None,
+                          orientation=a.orientation, no_attribution=a.no_attribution))
+        elif a.cmd == "plan-apply":
+            result = S.plan_apply(a.plan, json.loads(Path(a.choices).expanduser().read_text("utf-8")), a.out_dir)
+            _print(result)
+            if result['errors']:
+                return 1
+        elif a.cmd == "credits":
+            _print(S.credits(a.out_dir))
+        elif a.cmd == "audio-marks":
+            _print(S.audio_marks(a.audio, a.beats, a.silence_db, a.min_silence))
         elif a.cmd == "mcp":
             from footage_mcp.mcp_server import main as run
             run()

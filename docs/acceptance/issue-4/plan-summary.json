@@ -1,0 +1,474 @@
+{
+  "media": "video",
+  "commercial_only": true,
+  "lines": [
+    {
+      "line": 1,
+      "sentence": "消息打完，总怕有错别字？",
+      "queries": [
+        "typing smartphone message"
+      ],
+      "estimated_duration": 2,
+      "searches": [
+        {
+          "query": "typing smartphone message",
+          "media": "video",
+          "sources": {
+            "pixabay": "ok: 12",
+            "commons": "ok: 12"
+          }
+        }
+      ],
+      "comparison_path": "../../plan-stylepolish-line-1.jpg",
+      "candidates": [
+        {
+          "id": "pixabay:204527",
+          "title": "smartphone, cellphone, text, message, woman, discuss, technology",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-204527/",
+          "media": "video",
+          "duration": 8,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "conte_public via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            0.67,
+            2.0,
+            3.33,
+            4.67,
+            6.0,
+            7.33
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 2
+          },
+          "comparison_row": 1
+        },
+        {
+          "id": "pixabay:38084",
+          "title": "woman, phone, smartphone, technology, mobile, telephone, cellphone, person, female, wireless, device, media, communication, people, holding, business",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-38084/",
+          "media": "video",
+          "duration": 8,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "mephala1980 via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            0.67,
+            2.0,
+            3.33,
+            4.67,
+            6.0,
+            7.33
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 2
+          },
+          "comparison_row": 2
+        },
+        {
+          "id": "pixabay:204526",
+          "title": "smartphone, cellphone, text, message, woman, discuss, technology",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-204526/",
+          "media": "video",
+          "duration": 9,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "conte_public via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            0.75,
+            2.25,
+            3.75,
+            5.25,
+            6.75,
+            8.25
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 2
+          },
+          "comparison_row": 3
+        }
+      ]
+    },
+    {
+      "line": 2,
+      "sentence": "停笔一秒半，StylePolish 自动帮你看一遍。",
+      "queries": [
+        "working laptop typing"
+      ],
+      "estimated_duration": 2.8,
+      "searches": [
+        {
+          "query": "working laptop typing",
+          "media": "video",
+          "sources": {
+            "pixabay": "ok: 12",
+            "commons": "ok: 3"
+          }
+        }
+      ],
+      "comparison_path": "../../plan-stylepolish-line-2.jpg",
+      "candidates": [
+        {
+          "id": "pixabay:203260",
+          "title": "woman, computer, laptop, typing, work, desk, business, marketing, communication, texting, cup, espresso, coffee, professional",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-203260/",
+          "media": "video",
+          "duration": 5,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "Natures_Embrace via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            0.42,
+            1.25,
+            2.08,
+            2.92,
+            3.75,
+            4.58
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 2.8
+          },
+          "comparison_row": 1
+        },
+        {
+          "id": "pixabay:61037",
+          "title": "laptop, working, computer, job, freelancer, typing, business, publish, online, work, technology, startup, typewriter, boss, keyboard, notebook, desk, nomad, animation, animated, stock animation, motion graphics",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-61037/",
+          "media": "video",
+          "duration": 10,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "videoplasty via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            0.83,
+            2.5,
+            4.17,
+            5.83,
+            7.5,
+            9.17
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 2.8
+          },
+          "comparison_row": 2
+        },
+        {
+          "id": "pixabay:10822",
+          "title": "keyboard, typing, writing, notebook, computer, technology, laptop, business, internet, work, office, person, hand, communication, working, using, connection, pc, information, desktop, web, workplace",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-10822/",
+          "media": "video",
+          "duration": 12,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "Coverr-Free-Footage via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            1.0,
+            3.0,
+            5.0,
+            7.0,
+            9.0,
+            11.0
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 2.8
+          },
+          "comparison_row": 3
+        }
+      ]
+    },
+    {
+      "line": 3,
+      "sentence": "错字标红，不通顺的标黄，点开就能改。",
+      "queries": [
+        "editing text keyboard"
+      ],
+      "estimated_duration": 3.0,
+      "searches": [
+        {
+          "query": "editing text keyboard",
+          "media": "video",
+          "sources": {
+            "pixabay": "ok: 12",
+            "commons": "ok: 12"
+          }
+        }
+      ],
+      "comparison_path": "../../plan-stylepolish-line-3.jpg",
+      "candidates": [
+        {
+          "id": "pixabay:3174",
+          "title": "computer keyboard, typing, hands, female, keyboard, computer, technology, business, office, internet, type, key, communication, pc, information, white, working, letter, fingers",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-3174/",
+          "media": "video",
+          "duration": 12,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "Coverr-Free-Footage via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            1.0,
+            3.0,
+            5.0,
+            7.0,
+            9.0,
+            11.0
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 3.0
+          },
+          "comparison_row": 1
+        },
+        {
+          "id": "pixabay:232538",
+          "title": "keyboard, writing, digital, technology, desk, hardware, job, electronics, computing",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-232538/",
+          "media": "video",
+          "duration": 12,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "Darioguzben via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            1.0,
+            3.0,
+            5.0,
+            7.0,
+            9.0,
+            11.0
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 3.0
+          },
+          "comparison_row": 2
+        },
+        {
+          "id": "pixabay:10822",
+          "title": "keyboard, typing, writing, notebook, computer, technology, laptop, business, internet, work, office, person, hand, communication, working, using, connection, pc, information, desktop, web, workplace",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-10822/",
+          "media": "video",
+          "duration": 12,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "Coverr-Free-Footage via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            1.0,
+            3.0,
+            5.0,
+            7.0,
+            9.0,
+            11.0
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 3.0
+          },
+          "comparison_row": 3
+        }
+      ]
+    },
+    {
+      "line": 4,
+      "sentence": "改的是错，不是你的语气。发不发，还是你说了算。",
+      "queries": [
+        "sending message phone"
+      ],
+      "estimated_duration": 3.8,
+      "searches": [
+        {
+          "query": "sending message phone",
+          "media": "video",
+          "sources": {
+            "pixabay": "ok: 12",
+            "commons": "ok: 12"
+          }
+        }
+      ],
+      "comparison_path": "../../plan-stylepolish-line-4.jpg",
+      "candidates": [
+        {
+          "id": "pixabay:47743",
+          "title": "phone, hands, screen touch, smart phone, message",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-47743/",
+          "media": "video",
+          "duration": 7,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "crew_jak via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            0.58,
+            1.75,
+            2.92,
+            4.08,
+            5.25,
+            6.42
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 3.8
+          },
+          "comparison_row": 1
+        },
+        {
+          "id": "pixabay:64289",
+          "title": "young woman, smartphone, message, the internet, write, phone, sit, young",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-64289/",
+          "media": "video",
+          "duration": 9,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "Tanya50 via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            0.75,
+            2.25,
+            3.75,
+            5.25,
+            6.75,
+            8.25
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 3.8
+          },
+          "comparison_row": 2
+        },
+        {
+          "id": "pixabay:168343",
+          "title": "message, smartphone, mobile, lifestyle, technology, phone, communication, connection, gadget",
+          "source": "pixabay",
+          "page_url": "https://pixabay.com/videos/id-168343/",
+          "media": "video",
+          "duration": 11,
+          "width": 1920,
+          "height": 1080,
+          "license": {
+            "name": "Pixabay Content License",
+            "url": "https://pixabay.com/service/license-summary/",
+            "commercial_use": true,
+            "attribution_required": false,
+            "modifiable": true,
+            "attribution": "Amorn_mimi via Pixabay",
+            "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+          },
+          "frame_times": [
+            0.92,
+            2.75,
+            4.58,
+            6.42,
+            8.25,
+            10.08
+          ],
+          "suggested_trim": {
+            "start": 0,
+            "duration": 3.8
+          },
+          "comparison_row": 3
+        }
+      ]
+    }
+  ]
+}

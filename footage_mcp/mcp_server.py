@@ -27,7 +27,7 @@ def _dump(obj) -> str:
 def footage_search(query: str, limit: int = 12, sources: list[str] | None = None,
                    min_duration: float | None = None, max_duration: float | None = None,
                    orientation: str | None = None, commercial_only: bool = False,
-                   media: Literal["video", "audio"] = "video") -> str:
+                   media: Literal["video", "audio"] = "video", no_attribution: bool = False) -> str:
     """Search video (default) or audio across several libraries at once, with license info on every result.
 
     Use it to find B-roll and documentary-style shots for a narrated video: one shot per
@@ -56,8 +56,10 @@ def footage_search(query: str, limit: int = 12, sources: list[str] | None = None
         min_duration / max_duration: seconds, applied when the source reports duration.
         orientation: landscape | portrait | square.
         commercial_only: drop results not clearly licensed for commercial use.
+        no_attribution: retain only explicit attribution_required=false results.
     """
-    return _dump(S.search(query, limit, sources, min_duration, max_duration, orientation, commercial_only, media=media))
+    return _dump(S.search(query, limit, sources, min_duration, max_duration, orientation, commercial_only,
+                          media=media, no_attribution=no_attribution))
 
 
 @mcp.tool()
@@ -121,6 +123,50 @@ async def voice_preview(voice_id: str, text: str) -> str:
     """
     from footage_mcp.voices import voice_preview as preview_voice
     return _dump(await preview_voice(voice_id, text))
+
+
+@mcp.tool()
+def footage_plan(script: str, media: Literal["video", "audio", "both"] = "video",
+                 commercial_only: bool = False, candidates: int = 3,
+                 queries: list[list[str]] | None = None, out_dir: str = "footage",
+                 sources: list[str] | None = None, orientation: str = "landscape",
+                 no_attribution: bool = False) -> str:
+    """Match each nonempty script line to up to 3 candidates per media type; no asset downloads.
+    Supply English query lists per line for Chinese scripts (no automatic translation).
+    Returns plan.json ranked by source search position, then license/duration/orientation, with suggested trims,
+    local video comparison sheets (rows map to comparison_row), and any inspection errors.
+    Read the local comparison images before choosing; trims are estimates, not scene detection.
+    no_attribution retains only explicit attribution_required=false results (default false).
+    """
+    return _dump(S.plan(script, media, commercial_only, candidates, queries, out_dir, sources, orientation,
+                        no_attribution=no_attribution))
+
+
+@mcp.tool()
+def footage_plan_apply(plan: str, choices: dict[str, str], out_dir: str = "footage") -> str:
+    """Apply a plan.json file. choices maps 1-based line numbers to candidate IDs.
+    Edit suggested_trim in the plan first if needed. Downloads chosen clips with each sentence
+    as manifest note. Reports partial errors; successful downloads remain in the manifest.
+    """
+    return _dump(S.plan_apply(plan, choices, out_dir))
+
+
+@mcp.tool()
+def footage_credits(out_dir: str = "footage") -> str:
+    """Export Chinese/English CREDITS.md and LICENSE-RISKS.json from footage.json.
+    Flags commercial replacements (NC), no trimming (ND), unclear rights (including edge-tts),
+    and missing attribution. Does not modify the manifest or approve rights for publication.
+    """
+    return _dump(S.credits(out_dir))
+
+
+@mcp.tool()
+def audio_marks(audio: str, beats: bool = False, silence_db: float = -35, min_silence: float = .3) -> str:
+    """Analyze a local audio file or audio clip ID with ffmpeg: silence, EBU R128 loudness,
+    suggested in/out seconds. Optional beats uses librosa ([beats]); missing extra is skipped.
+    No editing or rendering. Suggested endpoints remove only leading/trailing silence.
+    """
+    return _dump(S.audio_marks(audio, beats, silence_db, min_silence))
 
 
 def main() -> None:

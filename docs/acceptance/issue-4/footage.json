@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "clips": [
+    {
+      "file": "edge-Xiaoyi-preview.mp3",
+      "clip_id": "edge:zh-CN-XiaoyiNeural",
+      "title": "Xiaoyi Chinese narration preview",
+      "source": "edge-tts",
+      "media": "audio",
+      "page_url": "https://github.com/rany2/edge-tts",
+      "start": 0,
+      "note": "消息打完，总怕有错别字？（验收音色试听，未批准商用）",
+      "license": {
+        "name": "Microsoft Edge online voices (unofficial interface)",
+        "url": "https://github.com/rany2/edge-tts",
+        "commercial_use": false,
+        "attribution_required": null,
+        "modifiable": null,
+        "attribution": null,
+        "notes": "非官方接口，商用授权不明确，适合演示/个人项目"
+      }
+    },
+    {
+      "file": "line-001-pixabay-204527-0s.mp4",
+      "clip_id": "pixabay:204527",
+      "title": "smartphone, cellphone, text, message, woman, discuss, technology",
+      "source": "pixabay",
+      "media": "video",
+      "page_url": "https://pixabay.com/videos/id-204527/",
+      "start": 0.0,
+      "duration": 2.0,
+      "note": "消息打完，总怕有错别字？",
+      "license": {
+        "name": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "commercial_use": true,
+        "attribution_required": false,
+        "modifiable": true,
+        "attribution": "conte_public via Pixabay",
+        "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+      },
+      "downloaded_at": "2026-11-12T13:44:18+0800"
+    },
+    {
+      "file": "line-002-pixabay-10822-0s.mp4",
+      "clip_id": "pixabay:10822",
+      "title": "keyboard, typing, writing, notebook, computer, technology, laptop, business, internet, work, office, person, hand, communication, working, using, connection, pc, information, desktop, web, workplace",
+      "source": "pixabay",
+      "media": "video",
+      "page_url": "https://pixabay.com/videos/id-10822/",
+      "start": 0.0,
+      "duration": 2.8,
+      "note": "停笔一秒半，StylePolish 自动帮你看一遍。",
+      "license": {
+        "name": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "commercial_use": true,
+        "attribution_required": false,
+        "modifiable": true,
+        "attribution": "Coverr-Free-Footage via Pixabay",
+        "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+      },
+      "downloaded_at": "2026-11-12T13:44:20+0800"
+    }
+  ]
+}
