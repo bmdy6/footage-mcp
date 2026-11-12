@@ -1,14 +1,15 @@
 """Footage sources. Each module exposes NAME, needs_key(), search(query, limit), resolve(native_id).
 
-search() returns clip dicts; resolve() returns one clip dict with video_url filled in.
+search() returns video clips; optional search_audio() returns audio clips.
+resolve() re-reads metadata and fills video_url or audio_url/preview_url.
 """
 from __future__ import annotations
 
 import re
 
-from footage_mcp.sources import archive, commons, europeana, nasa, pexels, pixabay
+from footage_mcp.sources import archive, commons, europeana, nasa, pexels, pixabay, openverse, freesound, jamendo
 
-SOURCES = {m.NAME: m for m in (pexels, pixabay, commons, archive, europeana, nasa)}
+SOURCES = {m.NAME: m for m in (pexels, pixabay, commons, archive, europeana, nasa, openverse, freesound, jamendo)}
 
 
 def clip(source: str, native_id: str, **fields) -> dict:
@@ -52,3 +53,11 @@ def parse_duration(v) -> float | None:
     for p in parts:
         total = total * 60 + p
     return round(total, 2)
+
+
+def audio_clip(source: str, native_id: str, **fields) -> dict:
+    """Audio uses the shared license contract; do not infer commercial clearance."""
+    defaults = {"media": "audio", "kind": "other", "audio_url": None, "preview_url": None}
+    base = clip(source, native_id, **(defaults | fields))
+    base["commercial_ok"] = (base.get("license") or {}).get("commercial_use")
+    return base

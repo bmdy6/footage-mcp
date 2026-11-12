@@ -17,13 +17,15 @@ def _meta(ext: dict, key: str) -> str:
     return (ext.get(key) or {}).get("value") or ""
 
 
-def _to_clip(page: dict) -> dict | None:
-    from footage_mcp.sources import clip, strip_html
+def _to_clip(page: dict, media: str = "video") -> dict | None:
+    from footage_mcp.sources import audio_clip, clip, strip_html
 
     info = (page.get("imageinfo") or [None])[0]
     mime = str((info or {}).get("mime", ""))
     # .ogv comes back as application/ogg; audio-only ogg has no width
-    if not info or not (mime.startswith("video/") or (mime == "application/ogg" and info.get("width"))):
+    is_audio = mime.startswith("audio/") or (mime == "application/ogg" and not (info or {}).get("width"))
+    if not info or (media == "audio" and not is_audio) or (media == "video" and not (
+            mime.startswith("video/") or (mime == "application/ogg" and info.get("width")))):
         return None
     ext = info.get("extmetadata") or {}
     artist = strip_html(_meta(ext, "Artist"))
@@ -35,7 +37,7 @@ def _to_clip(page: dict) -> dict | None:
     if _meta(ext, "AttributionRequired") == "false" and lic["commercial_use"] is None:
         lic["attribution_required"] = False
     title = page["title"]
-    return clip(
+    result = clip(
         NAME,
         title,
         title=_meta(ext, "ObjectName") or title.removeprefix("File:"),
@@ -50,6 +52,11 @@ def _to_clip(page: dict) -> dict | None:
         license=lic,
     )
 
+    if media == "audio":
+        result = audio_clip(NAME, title, **{k: v for k, v in result.items() if k not in ("id", "source", "video_url")},
+                            audio_url=result["video_url"], preview_url=result["video_url"])
+    return result
+
 
 def search(query: str, limit: int) -> list[dict]:
     data = net.get_json(API, {
@@ -63,7 +70,16 @@ def search(query: str, limit: int) -> list[dict]:
 def resolve(native_id: str) -> dict:
     data = net.get_json(API, {"action": "query", "titles": native_id, **PROPS})
     for page in (data.get("query") or {}).get("pages", {}).values():
-        c = _to_clip(page)
+        c = _to_clip(page) or _to_clip(page, "audio")
         if c:
             return c
     raise net.FetchError(f"commons file not found: {native_id}")
+
+
+def search_audio(query: str, limit: int) -> list[dict]:
+    data = net.get_json(API, {
+        "action": "query", "generator": "search", "gsrsearch": f"{query} filetype:audio",
+        "gsrnamespace": 6, "gsrlimit": min(limit, 50), **PROPS,
+    })
+    pages = sorted((data.get("query") or {}).get("pages", {}).values(), key=lambda p: p.get("index", 0))
+    return [c for p in pages if (c := _to_clip(p, "audio"))]

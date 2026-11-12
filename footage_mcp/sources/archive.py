@@ -75,12 +75,37 @@ def resolve(native_id: str) -> dict:
     if not meta:
         raise net.FetchError(f"archive item not found: {native_id}")
     c = _base({**meta, "identifier": native_id})
-    f = _pick_file(data.get("files", []))
+    audio = _first(meta.get("mediatype")) == "audio"
+    if audio:
+        from footage_mcp.sources import audio_clip
+        c = audio_clip(NAME, native_id, **{k: v for k, v in c.items() if k not in ("id", "source")})
+    f = _pick_audio(data.get("files", [])) if audio else _pick_file(data.get("files", []))
     if f:
-        c["video_url"] = f"https://archive.org/download/{urllib.parse.quote(native_id)}/{urllib.parse.quote(f['name'])}"
+        url = f"https://archive.org/download/{urllib.parse.quote(native_id)}/{urllib.parse.quote(f['name'])}"
+        c["audio_url" if audio else "video_url"] = url
+        if audio:
+            c["preview_url"] = url
         c["duration"] = parse_duration(f.get("length"))
         c["width"] = int(float(f["width"])) if f.get("width") else None
         c["height"] = int(float(f["height"])) if f.get("height") else None
     if not c["duration"]:
         c["duration"] = parse_duration(meta.get("runtime"))
     return c
+
+
+def _pick_audio(files: list[dict]) -> dict | None:
+    for ext in (".mp3", ".ogg", ".flac", ".wav", ".m4a"):
+        for f in files:
+            if f.get("name", "").lower().endswith(ext) and f.get("private") not in (True, "true"):
+                return f
+    return None
+
+
+def search_audio(query: str, limit: int) -> list[dict]:
+    from footage_mcp.sources import audio_clip
+
+    q = f"({query}) AND mediatype:audio AND (licenseurl:*publicdomain* OR licenseurl:*creativecommons*)"
+    params = [("q", q), ("rows", min(limit, 50)), ("output", "json")] + [("fl[]", f) for f in FIELDS]
+    data = net.get_json(SEARCH + "?" + urllib.parse.urlencode(params))
+    return [audio_clip(NAME, d["identifier"], **{k: v for k, v in _base(d).items() if k not in ("id", "source")})
+            for d in (data.get("response") or {}).get("docs", [])]

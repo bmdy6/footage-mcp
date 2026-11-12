@@ -33,7 +33,7 @@ def _to_clip(item: dict) -> dict:
     d = (item.get("data") or [{}])[0]
     thumb = next((l.get("href") for l in item.get("links", []) if l.get("render") == "image" or "thumb" in l.get("href", "")), None)
     nid = d.get("nasa_id", "")
-    return clip(
+    c = clip(
         NAME,
         nid,
         title=d.get("title") or nid,
@@ -44,6 +44,11 @@ def _to_clip(item: dict) -> dict:
         license=_license(d.get("center")),
     )
 
+    if d.get("media_type") == "audio":
+        from footage_mcp.sources import audio_clip
+        c = audio_clip(NAME, "audio:" + nid, **{k: v for k, v in c.items() if k not in ("id", "source")})
+    return c
+
 
 def search(query: str, limit: int) -> list[dict]:
     data = net.get_json(f"{API}/search", {"q": query, "media_type": "video", "page_size": min(limit, 100)})
@@ -51,12 +56,26 @@ def search(query: str, limit: int) -> list[dict]:
 
 
 def resolve(native_id: str) -> dict:
-    data = net.get_json(f"{API}/search", {"nasa_id": native_id, "media_type": "video"})
+    audio = native_id.startswith("audio:")
+    if audio:
+        native_id = native_id.removeprefix("audio:")
+    media = "audio" if audio else "video"
+    data = net.get_json(f"{API}/search", {"nasa_id": native_id, "media_type": media})
     items = (data.get("collection") or {}).get("items", [])
     if not items:
-        raise net.FetchError(f"nasa video not found: {native_id}")
+        raise net.FetchError(f"nasa {media} not found: {native_id}")
     c = _to_clip(items[0])
-    files = net.get_json(f"{ASSETS}/{urllib.parse.quote(native_id)}/collection.json")
+    if audio:
+        c["media"] = "audio"
+    assets = "https://images-assets.nasa.gov/audio" if audio else ASSETS
+    files = net.get_json(f"{assets}/{urllib.parse.quote(native_id)}/collection.json")
+    if audio:
+        for ext in (".mp3", ".wav", ".m4a", ".ogg"):
+            href = next((h for h in files if h.lower().endswith(ext)), None)
+            if href:
+                c["audio_url"] = c["preview_url"] = href.replace("http://", "https://", 1).replace(" ", "%20")
+                break
+        return c
     by_kind = {}
     for href in files:
         for kind in ("~orig.mp4", "~large.mp4", "~medium.mp4", "~mobile.mp4", "~orig.mov"):
@@ -67,3 +86,8 @@ def resolve(native_id: str) -> dict:
             c["video_url"] = by_kind[kind]
             break
     return c
+
+
+def search_audio(query: str, limit: int) -> list[dict]:
+    data = net.get_json(f"{API}/search", {"q": query, "media_type": "audio", "page_size": min(limit, 100)})
+    return [_to_clip(i) for i in (data.get("collection") or {}).get("items", [])]

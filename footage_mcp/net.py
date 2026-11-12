@@ -18,6 +18,10 @@ MEDIA_HOSTS = (
     "pixabay.com",
     "vimeocdn.com",
     "europeana.eu",
+    "jamendo.com",
+    "freesound.org",
+    "openverse.org",
+    "ccmixter.org",
 )
 
 
@@ -62,3 +66,17 @@ def get_bytes(url: str, timeout: float = 20, max_bytes: int = 8_000_000) -> byte
     if len(data) > max_bytes:
         raise FetchError("file too large for preview")
     return data
+
+
+def post_form(url: str, fields: dict, timeout: float = 20) -> dict:
+    """OAuth form POST; errors identify the host, never submitted credentials."""
+    _check_scheme(url)
+    req = urllib.request.Request(url, data=urllib.parse.urlencode(fields).encode(),
+                                 headers={"User-Agent": UA, "Accept": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=timeout) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        raise FetchError(f"HTTP {e.code} from {urllib.parse.urlsplit(url).hostname}") from e
+    except (urllib.error.URLError, TimeoutError, json.JSONDecodeError) as e:
+        raise FetchError(f"{type(e).__name__} from {urllib.parse.urlsplit(url).hostname}") from e

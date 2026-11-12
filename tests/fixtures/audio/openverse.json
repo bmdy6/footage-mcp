@@ -1,0 +1,418 @@
+{
+  "result_count": 208,
+  "page_count": 42,
+  "page_size": 5,
+  "page": 1,
+  "results": [
+    {
+      "id": "4efa09ec-60bd-4ac6-af23-c09481f3b570",
+      "title": "Upbeat Ukulele",
+      "indexed_on": "2022-08-01T21:56:38.264750Z",
+      "foreign_landing_url": "https://www.jamendo.com/track/970482",
+      "url": "https://prod-1.storage.jamendo.com/?trackid=970482&format=mp32",
+      "creator": "Akashic Records",
+      "creator_url": "https://www.jamendo.com/artist/375935/AkashicRecords",
+      "license": "by-nc-nd",
+      "license_version": "3.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/3.0/",
+      "provider": "jamendo",
+      "source": "jamendo",
+      "category": "music",
+      "genres": [
+        "folk"
+      ],
+      "filesize": null,
+      "filetype": "mp32",
+      "tags": [
+        {
+          "name": "happy",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "instrumental",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "speed_medium",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "strings",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "ukulele",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "uplifting",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        }
+      ],
+      "alt_files": null,
+      "attribution": "\"Upbeat Ukulele\" by Akashic Records is licensed under CC BY-NC-ND 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/3.0/.",
+      "fields_matched": [
+        "title",
+        "tags.name"
+      ],
+      "mature": false,
+      "audio_set": {
+        "title": "Positive and Upbeat Ukulele",
+        "foreign_landing_url": "https://www.jamendo.com/album/114188/positive-and-upbeat-ukulele",
+        "creator": "Akashic Records",
+        "creator_url": "https://www.jamendo.com/artist/375935/AkashicRecords",
+        "url": null,
+        "filesize": null,
+        "filetype": null
+      },
+      "duration": 175000,
+      "bit_rate": null,
+      "sample_rate": null,
+      "thumbnail": "https://api.openverse.org/v1/audio/4efa09ec-60bd-4ac6-af23-c09481f3b570/thumb/",
+      "detail_url": "https://api.openverse.org/v1/audio/4efa09ec-60bd-4ac6-af23-c09481f3b570/",
+      "related_url": "https://api.openverse.org/v1/audio/4efa09ec-60bd-4ac6-af23-c09481f3b570/related/",
+      "waveform": "https://api.openverse.org/v1/audio/4efa09ec-60bd-4ac6-af23-c09481f3b570/waveform/",
+      "unstable__sensitivity": []
+    },
+    {
+      "id": "96a2307a-4d65-4120-be86-2da9b0fff705",
+      "title": "Live It (1m30s) - Upbeat Ukulele Fun Happy Energetic",
+      "indexed_on": "2022-08-01T21:56:38.264750Z",
+      "foreign_landing_url": "https://www.jamendo.com/track/1816093",
+      "url": "https://prod-1.storage.jamendo.com/?trackid=1816093&format=mp32",
+      "creator": "juqboxmusic",
+      "creator_url": "https://www.jamendo.com/artist/509031/juqboxmusic",
+      "license": "by-nc-nd",
+      "license_version": "3.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/3.0/",
+      "provider": "jamendo",
+      "source": "jamendo",
+      "category": "music",
+      "genres": [
+        "poprock"
+      ],
+      "filesize": null,
+      "filetype": "mp32",
+      "tags": [
+        {
+          "name": "advertising",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "energetic",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "happy",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "instrumental",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "speed_high",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "strings",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "ukulele",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        }
+      ],
+      "alt_files": null,
+      "attribution": "\"Live It (1m30s) - Upbeat Ukulele Fun Happy Energetic\" by juqboxmusic is licensed under CC BY-NC-ND 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/3.0/.",
+      "fields_matched": [
+        "title",
+        "tags.name"
+      ],
+      "mature": false,
+      "audio_set": {
+        "title": "Live It - Upbeat Ukulele Fun Happy Energetic",
+        "foreign_landing_url": "https://www.jamendo.com/album/198256/live-it-upbeat-ukulele-fun-happy-energetic",
+        "creator": "juqboxmusic",
+        "creator_url": "https://www.jamendo.com/artist/509031/juqboxmusic",
+        "url": null,
+        "filesize": null,
+        "filetype": null
+      },
+      "duration": 87000,
+      "bit_rate": null,
+      "sample_rate": null,
+      "thumbnail": "https://api.openverse.org/v1/audio/96a2307a-4d65-4120-be86-2da9b0fff705/thumb/",
+      "detail_url": "https://api.openverse.org/v1/audio/96a2307a-4d65-4120-be86-2da9b0fff705/",
+      "related_url": "https://api.openverse.org/v1/audio/96a2307a-4d65-4120-be86-2da9b0fff705/related/",
+      "waveform": "https://api.openverse.org/v1/audio/96a2307a-4d65-4120-be86-2da9b0fff705/waveform/",
+      "unstable__sensitivity": []
+    },
+    {
+      "id": "46ba9f36-8010-49ed-ad11-028a0e8e94b9",
+      "title": "Upbeat Ukulele",
+      "indexed_on": "2022-08-01T21:56:38.264750Z",
+      "foreign_landing_url": "https://www.jamendo.com/track/1524709",
+      "url": "https://prod-1.storage.jamendo.com/?trackid=1524709&format=mp32",
+      "creator": "corporatemusic",
+      "creator_url": "https://www.jamendo.com/artist/498339/corporatemusic",
+      "license": "by-nc-nd",
+      "license_version": "3.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/3.0/",
+      "provider": "jamendo",
+      "source": "jamendo",
+      "category": "music",
+      "genres": [],
+      "filesize": null,
+      "filetype": "mp32",
+      "tags": [
+        {
+          "name": "caribbean",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "happy",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "instrumental",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "photos",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "speed_medium",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "ukulele",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "uplifting",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "whistling",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        }
+      ],
+      "alt_files": null,
+      "attribution": "\"Upbeat Ukulele\" by corporatemusic is licensed under CC BY-NC-ND 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/3.0/.",
+      "fields_matched": [
+        "title",
+        "tags.name"
+      ],
+      "mature": false,
+      "audio_set": {
+        "title": "Happy Ukulele",
+        "foreign_landing_url": "https://www.jamendo.com/album/175057/happy-ukulele",
+        "creator": "corporatemusic",
+        "creator_url": "https://www.jamendo.com/artist/498339/corporatemusic",
+        "url": null,
+        "filesize": null,
+        "filetype": null
+      },
+      "duration": 131000,
+      "bit_rate": null,
+      "sample_rate": null,
+      "thumbnail": "https://api.openverse.org/v1/audio/46ba9f36-8010-49ed-ad11-028a0e8e94b9/thumb/",
+      "detail_url": "https://api.openverse.org/v1/audio/46ba9f36-8010-49ed-ad11-028a0e8e94b9/",
+      "related_url": "https://api.openverse.org/v1/audio/46ba9f36-8010-49ed-ad11-028a0e8e94b9/related/",
+      "waveform": "https://api.openverse.org/v1/audio/46ba9f36-8010-49ed-ad11-028a0e8e94b9/waveform/",
+      "unstable__sensitivity": []
+    },
+    {
+      "id": "3dc3efc8-037f-460d-a90c-7251c444c8c7",
+      "title": "Make Your Way (2m30s) - Happy Upbeat Ukulele",
+      "indexed_on": "2022-08-01T21:56:38.264750Z",
+      "foreign_landing_url": "https://www.jamendo.com/track/1824381",
+      "url": "https://prod-1.storage.jamendo.com/?trackid=1824381&format=mp32",
+      "creator": "juqboxmusic",
+      "creator_url": "https://www.jamendo.com/artist/509031/juqboxmusic",
+      "license": "by-nc-nd",
+      "license_version": "3.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/3.0/",
+      "provider": "jamendo",
+      "source": "jamendo",
+      "category": "music",
+      "genres": [
+        "corporate",
+        "folk",
+        "pop"
+      ],
+      "filesize": null,
+      "filetype": "mp32",
+      "tags": [
+        {
+          "name": "children",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "happy",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "speed_veryhigh",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "strings",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "ukulele",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "upbeat",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "vocal",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        }
+      ],
+      "alt_files": null,
+      "attribution": "\"Make Your Way (2m30s) - Happy Upbeat Ukulele\" by juqboxmusic is licensed under CC BY-NC-ND 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/3.0/.",
+      "fields_matched": [
+        "title",
+        "tags.name"
+      ],
+      "mature": false,
+      "audio_set": {
+        "title": "Make Your Way - Happy Upbeat Ukulele",
+        "foreign_landing_url": "https://www.jamendo.com/album/199024/make-your-way-happy-upbeat-ukulele",
+        "creator": "juqboxmusic",
+        "creator_url": "https://www.jamendo.com/artist/509031/juqboxmusic",
+        "url": null,
+        "filesize": null,
+        "filetype": null
+      },
+      "duration": 150000,
+      "bit_rate": null,
+      "sample_rate": null,
+      "thumbnail": "https://api.openverse.org/v1/audio/3dc3efc8-037f-460d-a90c-7251c444c8c7/thumb/",
+      "detail_url": "https://api.openverse.org/v1/audio/3dc3efc8-037f-460d-a90c-7251c444c8c7/",
+      "related_url": "https://api.openverse.org/v1/audio/3dc3efc8-037f-460d-a90c-7251c444c8c7/related/",
+      "waveform": "https://api.openverse.org/v1/audio/3dc3efc8-037f-460d-a90c-7251c444c8c7/waveform/",
+      "unstable__sensitivity": []
+    },
+    {
+      "id": "ea5eee4c-3e22-4808-bf0f-6ac0bc5f34fb",
+      "title": "Get Happy - Upbeat Ukulele Happy Fun Playful",
+      "indexed_on": "2022-08-01T21:56:38.264750Z",
+      "foreign_landing_url": "https://www.jamendo.com/track/1757763",
+      "url": "https://prod-1.storage.jamendo.com/?trackid=1757763&format=mp32",
+      "creator": "juqboxmusic",
+      "creator_url": "https://www.jamendo.com/artist/509031/juqboxmusic",
+      "license": "by-nc-nd",
+      "license_version": "3.0",
+      "license_url": "https://creativecommons.org/licenses/by-nc-nd/3.0/",
+      "provider": "jamendo",
+      "source": "jamendo",
+      "category": "music",
+      "genres": [
+        "corporate",
+        "folk"
+      ],
+      "filesize": null,
+      "filetype": "mp32",
+      "tags": [
+        {
+          "name": "acousticguitar",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "advertising",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "children",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "energetic",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "glockenspiel",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "happy",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "instrumental",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        },
+        {
+          "name": "speed_high",
+          "accuracy": null,
+          "unstable__provider": "jamendo"
+        }
+      ],
+      "alt_files": null,
+      "attribution": "\"Get Happy - Upbeat Ukulele Happy Fun Playful\" by juqboxmusic is licensed under CC BY-NC-ND 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/3.0/.",
+      "fields_matched": [
+        "title"
+      ],
+      "mature": false,
+      "audio_set": {
+        "title": "Get Happy - Upbeat Ukulele Happy Fun Playful",
+        "foreign_landing_url": "https://www.jamendo.com/album/193375/get-happy-upbeat-ukulele-happy-fun-playful",
+        "creator": "juqboxmusic",
+        "creator_url": "https://www.jamendo.com/artist/509031/juqboxmusic",
+        "url": null,
+        "filesize": null,
+        "filetype": null
+      },
+      "duration": 221000,
+      "bit_rate": null,
+      "sample_rate": null,
+      "thumbnail": "https://api.openverse.org/v1/audio/ea5eee4c-3e22-4808-bf0f-6ac0bc5f34fb/thumb/",
+      "detail_url": "https://api.openverse.org/v1/audio/ea5eee4c-3e22-4808-bf0f-6ac0bc5f34fb/",
+      "related_url": "https://api.openverse.org/v1/audio/ea5eee4c-3e22-4808-bf0f-6ac0bc5f34fb/related/",
+      "waveform": "https://api.openverse.org/v1/audio/ea5eee4c-3e22-4808-bf0f-6ac0bc5f34fb/waveform/",
+      "unstable__sensitivity": []
+    }
+  ]
+}
