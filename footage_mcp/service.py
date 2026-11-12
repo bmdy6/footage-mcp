@@ -302,3 +302,26 @@ def library(out_dir: str) -> dict:
 
 def source_status() -> dict:
     return {n: ("needs " + k) if (k := m.needs_key()) else "ready" for n, m in SOURCES.items()}
+
+
+# New workflows are imported lazily; existing entry points and defaults are unchanged.
+def plan(script: str, media: str = 'video', commercial_only: bool = False, candidates: int = 3,
+         queries: list[list[str]] | None = None, out_dir: str = 'footage',
+         sources: list[str] | None = None, orientation: str = 'landscape') -> dict:
+    from footage_mcp.planning import plan as run
+    return run(script, media, commercial_only, candidates, queries, out_dir, sources, orientation)
+
+
+def plan_apply(plan: dict | str, choices: dict[str, str], out_dir: str = 'footage') -> dict:
+    from footage_mcp.planning import plan_apply as run
+    return run(plan, choices, out_dir)
+
+
+def credits(out_dir: str = 'footage') -> dict:
+    from footage_mcp.credits import credits as run
+    return run(out_dir)
+
+
+def audio_marks(audio: str, beats: bool = False, silence_db: float = -35, min_silence: float = .3) -> dict:
+    from footage_mcp.audio_marks import audio_marks as run
+    return run(audio, beats, silence_db, min_silence)
