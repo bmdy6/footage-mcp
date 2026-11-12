@@ -66,8 +66,10 @@ async def voice_preview(voice_id: str, text: str, out_dir: str | None = None) ->
         raise ValueError('unknown voice ID; choose an id from voice_list')
     if not text.strip() or len(text) > 2000:
         raise ValueError('preview text must contain 1-2000 characters')
-    # Load optional dependency before creating output artifacts.
+    # Validate the ID and load the optional dependency before creating output artifacts.
     if name == 'edge':
+        if not re.fullmatch(r'[A-Za-z0-9-]+Neural', native):
+            raise ValueError('invalid edge voice ID; choose an id from voice_list')
         try:
             _edge()
         except ImportError as e:
