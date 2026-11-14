@@ -1,12 +1,55 @@
 # footage-mcp
 
-从文案到可发布素材：按句搜索视频、音乐和音效，看真实抽帧选素材，再下载、导出中英署名与授权风险。发布前仍需核实原始许可。现有搜索和下载工具的默认行为不变。
+从文案到可发布素材：按句搜索视频、音乐和音效，看真实抽帧选素材，再下载、导出中英署名与授权风险。发布前仍需核实原始许可。
 
-[English](#english)
+[快速开始](#快速开始) · [来源](#来源) · [找声音](#找声音) · [工具](#工具) · [English](#english)
 
 <img src="docs/inspect-nasa.jpg" alt="NASA 国际空间站视频的 6 帧拼图，由 footage_inspect 从真实视频里抽取" width="640">
 
 `footage_inspect` 从真实视频里抽帧拼成一张图，AI 看完再决定用哪一段。
+
+## 为什么要先看帧
+
+AI 看不了视频，只看标题和简介挑素材，经常选错。下面这部片子在 Internet Archive 上搜「1950s factory assembly line」排第一，简介写着工厂和流水线，抽帧一看是咖啡壶广告：
+
+<img src="docs/inspect-archive.jpg" alt="American Maker (1960) 的 6 帧拼图：厨房、演讲者和咖啡壶，没有流水线" width="640">
+
+## 快速开始
+
+需要 Python 3.10+ 和 ffmpeg。
+
+```sh
+uvx --from git+https://github.com/bmdy6/footage-mcp footage-mcp search "earth from space" --limit 5
+uvx --from git+https://github.com/bmdy6/footage-mcp footage-mcp inspect "nasa:Earth Views from the International Space Station"
+uvx --from git+https://github.com/bmdy6/footage-mcp footage-mcp download archive:American1960 \
+  --out-dir public/footage --start 120 --duration 5 --note "第 3 句：工厂"
+```
+
+<details><summary>Claude Code / Codex / Cursor · MCP 配置</summary>
+
+**Claude Code**
+
+```sh
+claude mcp add footage -e PEXELS_API_KEY=xxx -e PIXABAY_API_KEY=xxx -- \
+  uvx --from git+https://github.com/bmdy6/footage-mcp --with "mcp>=1.0,<3" footage-mcp mcp
+```
+
+**Codex · ~/.codex/config.toml**
+
+```toml
+[mcp_servers.footage]
+command = "uvx"
+args = ["--from", "git+https://github.com/bmdy6/footage-mcp", "--with", "mcp>=1.0,<3", "footage-mcp", "mcp"]
+env = { PEXELS_API_KEY = "xxx", PIXABAY_API_KEY = "xxx" }
+```
+
+**Cursor · .cursor/mcp.json**
+
+```json
+{"mcpServers":{"footage":{"command":"uvx","args":["--from","git+https://github.com/bmdy6/footage-mcp","--with","mcp>=1.0,<3","footage-mcp","mcp"],"env":{"PEXELS_API_KEY":"xxx","PIXABAY_API_KEY":"xxx"}}}}
+```
+
+</details>
 
 ## 和单一来源搜索封装相比
 
@@ -55,49 +98,6 @@ CC BY 不管商不商用都要署名，署名可以写在视频简介里；不�
 <img src="docs/plan-stylepolish-line-1.jpg" alt="StylePolish 第一句的三个真实候选：从上到下与 plan 的 comparison_row 对应" width="640">
 
 真实 CLI 验收与候选来源见 [Issue #4 实测记录](docs/issue-4-acceptance.md)。素材只用于比较，不代表成片已采用。
-
-## 为什么要先看帧
-
-AI 看不了视频，只看标题和简介挑素材，经常选错。下面这部片子在 Internet Archive 上搜「1950s factory assembly line」排第一，简介写着工厂和流水线，抽帧一看是咖啡壶广告：
-
-<img src="docs/inspect-archive.jpg" alt="American Maker (1960) 的 6 帧拼图：厨房、演讲者和咖啡壶，没有流水线" width="640">
-
-## 快速开始
-
-需要 Python 3.10+ 和 ffmpeg。
-
-```sh
-uvx --from git+https://github.com/bmdy6/footage-mcp footage-mcp search "earth from space" --limit 5
-uvx --from git+https://github.com/bmdy6/footage-mcp footage-mcp inspect "nasa:Earth Views from the International Space Station"
-uvx --from git+https://github.com/bmdy6/footage-mcp footage-mcp download archive:American1960 \
-  --out-dir public/footage --start 120 --duration 5 --note "第 3 句：工厂"
-```
-
-<details><summary>Claude Code / Codex / Cursor · MCP 配置</summary>
-
-**Claude Code**
-
-```sh
-claude mcp add footage -e PEXELS_API_KEY=xxx -e PIXABAY_API_KEY=xxx -- \
-  uvx --from git+https://github.com/bmdy6/footage-mcp --with "mcp>=1.0,<3" footage-mcp mcp
-```
-
-**Codex · ~/.codex/config.toml**
-
-```toml
-[mcp_servers.footage]
-command = "uvx"
-args = ["--from", "git+https://github.com/bmdy6/footage-mcp", "--with", "mcp>=1.0,<3", "footage-mcp", "mcp"]
-env = { PEXELS_API_KEY = "xxx", PIXABAY_API_KEY = "xxx" }
-```
-
-**Cursor · .cursor/mcp.json**
-
-```json
-{"mcpServers":{"footage":{"command":"uvx","args":["--from","git+https://github.com/bmdy6/footage-mcp","--with","mcp>=1.0,<3","footage-mcp","mcp"],"env":{"PEXELS_API_KEY":"xxx","PIXABAY_API_KEY":"xxx"}}}}
-```
-
-</details>
 
 ## 来源
 
