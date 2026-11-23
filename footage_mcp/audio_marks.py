@@ -29,7 +29,7 @@ def _beats(source: str) -> dict:
     try:
         with tempfile.TemporaryDirectory(prefix='footage-beats-') as tmp:
             wav = Path(tmp) / 'audio.wav'
-            subprocess.run([S._ffmpeg(), '-v', 'error', '-i', source, '-vn', '-ac', '1', '-ar', '22050',
+            subprocess.run([S._ffmpeg(), '-v', 'error', *S._ffmpeg_input(source), '-vn', '-ac', '1', '-ar', '22050',
                             '-y', str(wav)], check=True, capture_output=True, timeout=600)
             y, sr = librosa.load(str(wav), sr=22050)
             tempo, frames = librosa.beat.beat_track(y=y, sr=sr)
@@ -55,7 +55,7 @@ def audio_marks(audio: str, beats: bool = False, silence_db: float = -35,
     else:
         raise ValueError('audio must be an existing local file or an audio clip id')
     try:
-        result = subprocess.run([S._ffmpeg(), '-hide_banner', '-nostats', '-i', source, '-vn',
+        result = subprocess.run([S._ffmpeg(), '-hide_banner', '-nostats', *S._ffmpeg_input(source), '-vn',
                                  '-af', f'silencedetect=noise={silence_db}dB:d={min_silence},ebur128=peak=true',
                                  '-f', 'null', '-'], capture_output=True, text=True, timeout=600)
     except subprocess.TimeoutExpired as e:
