@@ -1,0 +1,85 @@
+{
+  "music": "commons-File-Breaking-News-5-by-Sascha-Ende.ogg-18s.mp3",
+  "city": "pixabay-1044-2s.mp4",
+  "credits": [
+    {
+      "title": "Breaking News 5（18 秒起截取；淡入淡出、音量 0.12）",
+      "source": "Wikimedia Commons",
+      "media": "audio",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0",
+        "commercial_use": true,
+        "attribution_required": true,
+        "modifiable": true,
+        "attribution": "Sascha Ende, CC BY 4.0, via Wikimedia Commons",
+        "notes": null
+      }
+    },
+    {
+      "title": "纽约街景 / 布鲁克林大桥示意（非 IPO 现场）",
+      "source": "Pixabay",
+      "media": "video",
+      "license": {
+        "name": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "commercial_use": true,
+        "attribution_required": false,
+        "modifiable": true,
+        "attribution": "Coverr-Free-Footage via Pixabay",
+        "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+      }
+    },
+    {
+      "title": "GPT-6.2 发布页",
+      "source": "The Verge",
+      "media": "image",
+      "license": {
+        "name": "网页截图，授权未确认",
+        "commercial_use": null,
+        "attribution": "The Verge"
+      }
+    },
+    {
+      "title": "Neon 官方博客",
+      "source": "blog.google",
+      "media": "image",
+      "license": {
+        "name": "网页截图，授权未确认",
+        "commercial_use": null,
+        "attribution": "blog.google"
+      }
+    },
+    {
+      "title": "Anthropic IPO 定价公告",
+      "source": "anthropic.com",
+      "media": "image",
+      "license": {
+        "name": "网页截图，授权未确认",
+        "commercial_use": null,
+        "attribution": "anthropic.com"
+      }
+    },
+    {
+      "title": "GPT-6.2 智能榜文章",
+      "source": "artificialanalysis.ai",
+      "media": "image",
+      "license": {
+        "name": "网页截图，授权未确认",
+        "commercial_use": null,
+        "attribution": "artificialanalysis.ai"
+      }
+    },
+    {
+      "title": "官方模型对比表",
+      "source": "ai.google.dev",
+      "media": "image",
+      "license": {
+        "name": "网页截图，授权未确认",
+        "commercial_use": null,
+        "attribution": "ai.google.dev"
+      }
+    }
+  ],
+  "chartCity": "pixabay-7260-1s.mp4"
+}

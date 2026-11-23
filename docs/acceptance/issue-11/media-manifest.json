@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "clips": [
+    {
+      "file": "pixabay-1044-2s.mp4",
+      "clip_id": "pixabay:1044",
+      "title": "new york city, manhattan, people, cars, crossroads, america, street, usa, city, skyscrapers, pedestrians, midtown, avenue",
+      "source": "pixabay",
+      "media": "video",
+      "page_url": "https://pixabay.com/videos/id-1044/",
+      "start": 2.0,
+      "duration": 4.0,
+      "note": "Gemini4Race line 7; New York city illustration, NOT IPO event footage",
+      "license": {
+        "name": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "commercial_use": true,
+        "attribution_required": false,
+        "modifiable": true,
+        "attribution": "Coverr-Free-Footage via Pixabay",
+        "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+      },
+      "downloaded_at": "2026-11-23T21:54:04+0800"
+    },
+    {
+      "file": "commons-File-Breaking-News-5-by-Sascha-Ende.ogg-18s.mp3",
+      "clip_id": "commons:File:Breaking News 5 by Sascha Ende.ogg",
+      "title": "Breaking News 5 by Sascha Ende",
+      "source": "commons",
+      "media": "audio",
+      "page_url": "https://commons.wikimedia.org/wiki/File:Breaking_News_5_by_Sascha_Ende.ogg",
+      "start": 18.0,
+      "duration": 170.0,
+      "note": "Gemini4Race music, source offset 18s, volume 0.12, fades; CC BY 4.0",
+      "license": {
+        "name": "CC BY 4.0",
+        "url": "https://creativecommons.org/licenses/by/4.0",
+        "commercial_use": true,
+        "attribution_required": true,
+        "modifiable": true,
+        "attribution": "Sascha Ende, CC BY 4.0, via Wikimedia Commons",
+        "notes": null
+      },
+      "downloaded_at": "2026-11-23T21:55:38+0800"
+    },
+    {
+      "file": "pixabay-7260-1s.mp4",
+      "clip_id": "pixabay:7260",
+      "title": "new york city, nigh, brooklyn bridge, bridge, suspension bridge, city, buildings, downtown, manhattan, nyc, tourism, architecture",
+      "source": "pixabay",
+      "media": "video",
+      "page_url": "https://pixabay.com/videos/id-7260/",
+      "start": 1.0,
+      "duration": 12.0,
+      "note": "Gemini4Race leaderboard backdrop; separate NYC bridge footage used once",
+      "license": {
+        "name": "Pixabay Content License",
+        "url": "https://pixabay.com/service/license-summary/",
+        "commercial_use": true,
+        "attribution_required": false,
+        "modifiable": true,
+        "attribution": "Coverr-Free-Footage via Pixabay",
+        "notes": "Free for commercial use, no attribution required. Do not sell unaltered copies; recognizable brands or people may need extra rights."
+      },
+      "downloaded_at": "2026-11-23T22:02:43+0800"
+    }
+  ]
+}

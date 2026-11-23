@@ -59,11 +59,13 @@ export const DarkGrid: React.FC = () => (
 );
 
 // 字幕：按配音时间轴显示当前这句。
-export const Subtitles: React.FC<{lines: {text: string; start: number; end: number}[]}> = ({lines}) => {
+export const Subtitles: React.FC<{lines: {text: string; start: number; end: number}[]; holdUntilNext?: boolean; hiddenRanges?: {start:number;end:number}[]}> = ({lines, holdUntilNext = false, hiddenRanges = []}) => {
   const frame = useCurrentFrame();
   const t = frame / 30;
-  const cur = lines.find((l) => t >= l.start - 0.05 && t < l.end + 0.25);
-  if (!cur) return null;
+  const cur = holdUntilNext
+    ? lines.find((l, i) => t >= l.start && t < (lines[i + 1]?.start ?? l.end + .35))
+    : lines.find((l) => t >= l.start - 0.05 && t < l.end + 0.25);
+  if (!cur || hiddenRanges.some(r=>t>=r.start && t<r.end)) return null;
   return (
     <div style={{position: 'absolute', left: 0, right: 0, bottom: 70, textAlign: 'center'}}>
       <span style={{fontFamily: theme.font, fontSize: 50, fontWeight: 700, color: theme.text, padding: '8px 26px', background: 'rgba(10,10,11,0.55)', borderRadius: 6, WebkitTextStroke: '0px'}}>{cur.text}</span>
