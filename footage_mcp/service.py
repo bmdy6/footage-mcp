@@ -112,6 +112,14 @@ def resolve(clip_id: str) -> dict:
     return c
 
 
+def _ffmpeg_input(src: str) -> list[str]:
+    """ffmpeg input args; remote URLs carry our User-Agent (Wikimedia returns 429 without one)."""
+    from .net import UA
+    if str(src).startswith(("http://", "https://")):
+        return ["-user_agent", UA, "-i", str(src)]
+    return ["-i", str(src)]
+
+
 def _ffmpeg() -> str:
     exe = shutil.which("ffmpeg")
     if not exe:
@@ -157,7 +165,7 @@ def inspect(clip_id: str, frames: int = 6) -> tuple[dict, bytes]:
             i, t = i_t
             out = Path(tmp) / f"raw{i:02d}.jpg"
             try:
-                r = subprocess.run([ff, "-v", "error", "-ss", str(t), "-i", url, "-frames:v", "1",
+                r = subprocess.run([ff, "-v", "error", "-ss", str(t), *_ffmpeg_input(url), "-frames:v", "1",
                                     "-vf", "scale=360:-2", "-q:v", "4", "-y", str(out)],
                                    capture_output=True, timeout=90)
             except subprocess.TimeoutExpired:
@@ -197,7 +205,7 @@ def _inspect_audio(c: dict) -> tuple[dict, bytes]:
     tmp = Path(tempfile.mkdtemp(prefix="footage-audio-"))
     try:
         audio = tmp / "source"
-        result = subprocess.run([ff, "-v", "error", "-i", url, "-vn", "-c:a", "pcm_s16le",
+        result = subprocess.run([ff, "-v", "error", *_ffmpeg_input(url), "-vn", "-c:a", "pcm_s16le",
                                  "-f", "wav", "-y", str(audio)], capture_output=True, text=True, timeout=300)
         if result.returncode:
             raise RuntimeError(f"could not read audio: {result.stderr.strip()[-400:]}")
@@ -242,7 +250,7 @@ def download(clip_id: str, out_dir: str, start: float = 0, duration: float | Non
     suffix = "mp3" if media == "audio" else "mp4"
     name = f"{c['source']}-{_safe(c['id'].split(':', 1)[1])}-{int(start)}s.{suffix}"
     target = out / name
-    cmd = [_ffmpeg(), "-v", "error", "-ss", str(start), "-i", c["audio_url" if media == "audio" else "video_url"]]
+    cmd = [_ffmpeg(), "-v", "error", "-ss", str(start), *_ffmpeg_input(c["audio_url" if media == "audio" else "video_url"])]
     if duration:
         cmd += ["-t", str(duration)]
     if media == "audio":
