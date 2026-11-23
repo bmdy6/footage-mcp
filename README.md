@@ -2,7 +2,7 @@
 
 从文案到可发布素材：按句搜索视频、音乐和音效，看真实抽帧选素材，再下载、导出中英署名与授权风险。发布前仍需核实原始许可。
 
-[快速开始](#快速开始) · [来源](#来源) · [找声音](#找声音) · [工具](#工具) · [English](#english)
+[快速开始](#快速开始) · [合成成片](#合成成片video) · [来源](#来源) · [找声音](#找声音) · [工具](#工具) · [English](#english)
 
 <img src="docs/inspect-nasa.jpg" alt="NASA 国际空间站视频的 6 帧拼图，由 footage_inspect 从真实视频里抽取" width="640">
 
@@ -174,9 +174,25 @@ MCP 新增 `voice_list(lang="zh-CN")`、`voice_preview(voice_id, text)`，音色
 
 `CREDITS.md` 可以直接贴到视频简介里。
 
-## 搭配 Remotion
+## 合成成片（video/）
 
-把 `out_dir` 设成 Remotion 项目的 `public/footage`，AI 写完脚本后按句搜素材、看帧、下载，再用 `<OffthreadVideo src={staticFile("footage/xxx.mp4")} />` 排进时间线。
+`video/` 是一个 [Remotion](https://www.remotion.dev) 项目：footage-mcp 找来的素材、真实数据、配音和字幕，用代码合成成片。画面不靠 AI 生成，数字和文字都是代码画的，边缘清楚。
+
+<img src="docs/video-demo.jpg" alt="15 秒样片的四个画面：2000 年大字、中美 GDP 柱状对比、「港口」镜头、63% 数字滚动" width="640">
+
+15 秒样片 `GdpDemo`：中美名义 GDP 2000–2025（World Bank WDI），配音用 edge-tts，素材和配乐全部免费，成片见 [Release v0.2.0](https://github.com/bmdy6/footage-mcp/releases/tag/v0.2.0)。
+
+```sh
+cd video && npm install
+./scripts/fetch-footage.sh                     # 拉素材，生成 footage.json 和 CREDITS.md
+npx remotion render GdpDemo out/gdp-demo.mp4   # 15 秒约 1 分钟
+npm run qa -- out/gdp-demo.mp4                 # 质检：黑屏、闪帧、每秒一帧总览图
+```
+
+- **每句配音一个视觉动作**：大字跳出、数字滚动、柱状对比、折线赛跑，底部全程字幕。组件在 `video/src/components/`。
+- **数据带来源**：每个数据画面左下角写来源和更新日期，查不到写「未取得」。
+- **片尾自动列素材**：读 `footage.json`，非免费或授权不明的素材自动标「非免费，仅自用」。
+- **审美手册** [`video/STYLE.md`](video/STYLE.md)：黑、金、红三色，节奏规则来自对一条知识解说视频的拆解（[`video/docs/rhythm-reference.md`](video/docs/rhythm-reference.md)）。
 
 ## 授权说明
 
@@ -195,6 +211,8 @@ python -m build
 ## English
 
 From script to publishable assets: match each sentence to video, music or sound candidates, compare real frames, download your choices, and export bilingual credits with a license-risk report. Verify original rights before publication. Existing search/download defaults remain unchanged.
+
+`video/` is a Remotion project that turns the downloaded footage, real data, voice-over and subtitles into a finished video with code — see the 15-second sample in [Release v0.2.0](https://github.com/bmdy6/footage-mcp/releases/tag/v0.2.0).
 
 | Capability | Single-source search wrapper | footage-mcp |
 |---|---|---|
