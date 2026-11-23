@@ -21,3 +21,6 @@ footage-mcp = "footage_mcp.cli:main"
 
 [tool.setuptools.packages.find]
 include = ["footage_mcp*"]
+
+[tool.setuptools.package-data]
+footage_mcp = ["guides/*.md"]
