@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {theme} from '../theme';
 
-export type Clip = {title: string; source: string; license: {name: string; commercial_use?: boolean | null; attribution?: string | null}};
+export type Clip = {title: string; source: string; media?: string; license: {name: string; commercial_use?: boolean | null; attribution?: string | null}};
 
 // 非免费素材：明确标了不可商用、或者授权未知。
 export const isNonFree = (c: Clip) => c.license.commercial_use !== true;
@@ -19,7 +19,7 @@ export const EndNote: React.FC<{clips: Clip[]; dataSource: string}> = ({clips, d
       {clips.map((c, i) => (
         <div key={i} style={{fontSize: 22, lineHeight: 1.7, color: theme.muted}}>
           {isNonFree(c) && <span style={{color: theme.red, marginRight: 10}}>[非免费，仅自用]</span>}
-          画面：{c.title} — {c.license.attribution || c.source}（{c.license.name}）
+          {c.media === 'audio' ? '配乐' : '画面'}：{c.title} — {c.license.attribution || c.source}（{c.license.name}）
         </div>
       ))}
       {nonFree.length > 0 && (
