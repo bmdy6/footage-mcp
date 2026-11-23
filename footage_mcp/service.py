@@ -340,3 +340,9 @@ def credits(out_dir: str = 'footage') -> dict:
 def audio_marks(audio: str, beats: bool = False, silence_db: float = -35, min_silence: float = .3) -> dict:
     from footage_mcp.audio_marks import audio_marks as run
     return run(audio, beats, silence_db, min_silence)
+
+
+def video_script_guide() -> str:
+    """Return the bundled guide for writing short knowledge-video scripts (topic, structure, visuals)."""
+    from importlib.resources import files
+    return files("footage_mcp").joinpath("guides/video-script.md").read_text("utf-8")

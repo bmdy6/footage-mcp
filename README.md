@@ -156,6 +156,7 @@ MCP 新增 `voice_list(lang="zh-CN")`、`voice_preview(voice_id, text)`，音色
 | `footage_plan_apply` | 按 1-based 句子编号 → 候选 ID 下载，自动填 note |
 | `footage_credits` | 中英署名及 NC / ND / 不明授权 / 缺署名报告 |
 | `audio_marks` | 静音、响度、建议进出点与可选节拍 |
+| `video_script_guide` | 写视频文稿前先读：选题、文稿结构、句子写法、画面和自查清单（也有同名 prompt `video_script`，命令行 `footage-mcp guide`） |
 
 ## 素材就是上下文
 

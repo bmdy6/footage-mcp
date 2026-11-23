@@ -76,6 +76,7 @@ def main(argv: list[str] | None = None) -> int:
     marks.add_argument("--silence-db", type=float, default=-35)
     marks.add_argument("--min-silence", type=float, default=.3)
 
+    sub.add_parser("guide", help="print the guide for writing a video script")
     sub.add_parser("sources", help="show which sources are ready")
     sub.add_parser("mcp", help="run the stdio MCP server")
 
@@ -101,6 +102,8 @@ def main(argv: list[str] | None = None) -> int:
         elif a.cmd == "voice-preview":
             from footage_mcp.voices import voice_preview
             _print(asyncio.run(voice_preview(a.voice_id, a.text, a.out_dir)))
+        elif a.cmd == "guide":
+            print(S.video_script_guide())
         elif a.cmd == "sources":
             _print(S.source_status())
         elif a.cmd == "plan":

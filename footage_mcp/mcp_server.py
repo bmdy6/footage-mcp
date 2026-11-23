@@ -169,6 +169,24 @@ def audio_marks(audio: str, beats: bool = False, silence_db: float = -35, min_si
     return _dump(S.audio_marks(audio, beats, silence_db, min_silence))
 
 
+@mcp.tool()
+def video_script_guide() -> str:
+    """How to write a short knowledge-video script that people finish watching: pick a concrete,
+    counter-intuitive topic, open with evidence, keep a cliffhanger, split into chapters with one
+    number each, compare, answer the obvious objection, and plan one visual beat per sentence.
+
+    Call this BEFORE writing a narration script for a video, then follow it."""
+    return S.video_script_guide()
+
+
+@mcp.prompt()
+def video_script(topic: str) -> str:
+    """Write a 3-5 minute knowledge-video script for a topic, following the bundled guide."""
+    return (f"按下面的指南，为选题「{topic}」写一份 3～5 分钟的视频文稿。"
+            "每句不超过 12 个字，每句后面用括号写配什么画面；每个数字写来源和日期，查不到写「未取得」。\n\n"
+            + S.video_script_guide())
+
+
 def main() -> None:
     mcp.run()
 
