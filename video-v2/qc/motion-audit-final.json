@@ -1,0 +1,178 @@
+{
+  "findings": [
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 5.6,
+      "end": 7.9,
+      "meanStep": 0.0,
+      "netChange": 0.0,
+      "duration": 2.3,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 8.8,
+      "end": 10.9,
+      "meanStep": 0.0,
+      "netChange": 0.0,
+      "duration": 2.1,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 15.9,
+      "end": 17.9,
+      "meanStep": 0.01,
+      "netChange": 0.04,
+      "duration": 2.0,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 20.7,
+      "end": 23.3,
+      "meanStep": 0.01,
+      "netChange": 0.22,
+      "duration": 2.6,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 29.4,
+      "end": 31.6,
+      "meanStep": 0.002,
+      "netChange": 0.04,
+      "duration": 2.2,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 33.3,
+      "end": 35.3,
+      "meanStep": 0.001,
+      "netChange": 0.02,
+      "duration": 2.0,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 35.5,
+      "end": 37.8,
+      "meanStep": 0.003,
+      "netChange": 0.07,
+      "duration": 2.3,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 37.9,
+      "end": 40.1,
+      "meanStep": 0.0,
+      "netChange": 0.0,
+      "duration": 2.2,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 43.5,
+      "end": 45.8,
+      "meanStep": 0.0,
+      "netChange": 0.0,
+      "duration": 2.3,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 52.9,
+      "end": 55.6,
+      "meanStep": 0.014,
+      "netChange": 0.37,
+      "duration": 2.7,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 65.5,
+      "end": 67.7,
+      "meanStep": 0.001,
+      "netChange": 0.03,
+      "duration": 2.2,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 67.8,
+      "end": 70.4,
+      "meanStep": 0.014,
+      "netChange": 0.03,
+      "duration": 2.6,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 83.1,
+      "end": 85.1,
+      "meanStep": 0.002,
+      "netChange": 0.04,
+      "duration": 2.0,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 97.7,
+      "end": 99.7,
+      "meanStep": 0.006,
+      "netChange": 0.11,
+      "duration": 2.0,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 103.3,
+      "end": 105.5,
+      "meanStep": 0.014,
+      "netChange": 0.08,
+      "duration": 2.2,
+      "allowed": false
+    },
+    {
+      "segment": "preview-final",
+      "kind": "hold-warn",
+      "start": 105.8,
+      "end": 107.9,
+      "meanStep": 0.01,
+      "netChange": 0.02,
+      "duration": 2.1,
+      "allowed": false
+    }
+  ],
+  "blocking": 0,
+  "params": {
+    "fps": 10.0,
+    "subtitle_band": 0.13,
+    "step_still": 0.12,
+    "step_slow": 0.9,
+    "max_hold": 2.0,
+    "max_hold_block": 3.0,
+    "max_slow": 1.2,
+    "max_move": 1.4,
+    "max_scroll": 2.0,
+    "cut_step": 80.0,
+    "allow": []
+  }
+}

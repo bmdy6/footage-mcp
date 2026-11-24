@@ -1,0 +1,228 @@
+{
+  "findings": [
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 1.5,
+      "end": 4.8,
+      "meanStep": 0.0,
+      "netChange": 0.0,
+      "duration": 3.3,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 5.6,
+      "end": 8.7,
+      "meanStep": 0.005,
+      "netChange": 0.13,
+      "duration": 3.1,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 8.8,
+      "end": 13.1,
+      "meanStep": 0.005,
+      "netChange": 0.16,
+      "duration": 4.3,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 15.9,
+      "end": 17.9,
+      "meanStep": 0.01,
+      "netChange": 0.03,
+      "duration": 2.0,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 20.7,
+      "end": 23.3,
+      "meanStep": 0.01,
+      "netChange": 0.22,
+      "duration": 2.6,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 29.4,
+      "end": 31.6,
+      "meanStep": 0.002,
+      "netChange": 0.04,
+      "duration": 2.2,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 31.8,
+      "end": 35.3,
+      "meanStep": 0.004,
+      "netChange": 0.11,
+      "duration": 3.5,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 35.5,
+      "end": 40.1,
+      "meanStep": 0.009,
+      "netChange": 0.42,
+      "duration": 4.6,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 43.5,
+      "end": 45.8,
+      "meanStep": 0.001,
+      "netChange": 0.01,
+      "duration": 2.3,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 48.5,
+      "end": 52.8,
+      "meanStep": 0.032,
+      "netChange": 1.2,
+      "duration": 4.3,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 52.9,
+      "end": 55.6,
+      "meanStep": 0.014,
+      "netChange": 0.37,
+      "duration": 2.7,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 56.7,
+      "end": 60.0,
+      "meanStep": 0.008,
+      "netChange": 0.04,
+      "duration": 3.3,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 65.5,
+      "end": 67.7,
+      "meanStep": 0.001,
+      "netChange": 0.02,
+      "duration": 2.2,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 67.8,
+      "end": 70.4,
+      "meanStep": 0.019,
+      "netChange": 0.04,
+      "duration": 2.6,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 82.1,
+      "end": 85.1,
+      "meanStep": 0.03,
+      "netChange": 0.87,
+      "duration": 3.0,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 85.7,
+      "end": 88.9,
+      "meanStep": 0.014,
+      "netChange": 0.43,
+      "duration": 3.2,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 97.7,
+      "end": 99.7,
+      "meanStep": 0.006,
+      "netChange": 0.11,
+      "duration": 2.0,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 103.3,
+      "end": 105.5,
+      "meanStep": 0.014,
+      "netChange": 0.08,
+      "duration": 2.2,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold-warn",
+      "start": 105.8,
+      "end": 107.9,
+      "meanStep": 0.01,
+      "netChange": 0.02,
+      "duration": 2.1,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 109.4,
+      "end": 112.4,
+      "meanStep": 0.019,
+      "netChange": 0.56,
+      "duration": 3.0,
+      "allowed": false
+    },
+    {
+      "segment": "preview-raw",
+      "kind": "hold",
+      "start": 113.2,
+      "end": 117.9,
+      "meanStep": 0.011,
+      "netChange": 0.51,
+      "duration": 4.7,
+      "allowed": false
+    }
+  ],
+  "blocking": 11,
+  "params": {
+    "fps": 10.0,
+    "subtitle_band": 0.13,
+    "step_still": 0.12,
+    "step_slow": 0.9,
+    "max_hold": 2.0,
+    "max_hold_block": 3.0,
+    "max_slow": 1.2,
+    "max_move": 1.4,
+    "max_scroll": 2.0,
+    "cut_step": 80.0,
+    "allow": []
+  }
+}

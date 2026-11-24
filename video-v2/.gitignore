@@ -1,0 +1,11 @@
+node_modules
+out/
+qc/frames/
+qc/sheets/
+public/audio/
+public/fonts/*.otf
+public/fonts/*.ttf
+public/gemini4-v2/
+qc/final-frames/
+qc/flash-*/
+qc/seams/

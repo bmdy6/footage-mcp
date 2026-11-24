@@ -1,0 +1,52 @@
+{
+  "episode": "Gemini4Race-v2",
+  "fps": 30,
+  "srt": "../video/public/gemini4-v2/voice.srt",
+  "voiceStatic": "gemini4-v2/voice.wav",
+  "audioEndSeconds": 117.82754166666666,
+  "segments": [
+    [
+      "S01",
+      1,
+      8
+    ],
+    [
+      "S02",
+      9,
+      16
+    ],
+    [
+      "S03",
+      17,
+      25
+    ],
+    [
+      "S04",
+      26,
+      33
+    ],
+    [
+      "S05",
+      34,
+      44
+    ],
+    [
+      "S06",
+      45,
+      47
+    ],
+    [
+      "S07",
+      48,
+      58
+    ],
+    [
+      "S08",
+      59,
+      67
+    ]
+  ],
+  "fullComposition": "Gemini4Race-v2",
+  "finalVideo": "~/归档/视频样片/gemini4-race-v2.mp4",
+  "tailSeconds": 0.55
+}

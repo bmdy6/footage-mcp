@@ -1,0 +1,17 @@
+{
+  "fredCommit": "59b9e9957957dc9f3fd94ab78f95cec33c29e915",
+  "fonts": {
+    "MiSans-Medium.otf": "f9239c75fa0a661b788916250c6d4ad0d52d8a643f1ce2a9142f6588d4d2cb64",
+    "MiSans-Semibold.otf": "8a194c3e7f6813f73a2c68988bf77483296268416fb0c1d0870338a0b23b8c9a",
+    "MiSans-Heavy.otf": "6be4fe9fd5fcfbf766e90b0936b44b731893a3836376a77d964673f398b7131c",
+    "RuiZi.ttf": "ec8523db8f8373eb49e0fa87da5fd12c4d0d0896f2072a220c578c0e778d10da",
+    "SourceCodePro-Semibold.ttf": "1be15ad5855dab0017af32153342989b91fec313efcdbeda69bdeec92794da0d",
+    "LXGWWenKai-Regular.ttf": "39ad71264b588165b469e35e6afb162a378dacd1f95348160240ba9038ac3009",
+    "SmileySans-Oblique.ttf": "b447d7e781f08bc95c4c9f23ba71ed2b8ebb639aa7184485c71c4ca5afcd25c4"
+  },
+  "audio": {
+    "voice.srt": "590bc349adcfbf6b2ae96cef8e3e38efb35109f6575d3a11fc62cbaf9fc534d8",
+    "bgm-source.mp3": "0f983ba30287315ecac5e3ca6a267a7e46a8fbe3adabe858db17d14e50196740",
+    "voice.flac": "0ea25d857137657924d89ef99570ea37f4b0c6222ebca82b2a4057decefc4130"
+  }
+}

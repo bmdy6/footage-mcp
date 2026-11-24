@@ -1,0 +1,63 @@
+{
+  "v1": {
+    "rate": "+18%",
+    "duration": 101.30929166666667,
+    "sentenceGaps": {
+      "n": 66,
+      "min": 0.12,
+      "median": 0.12,
+      "p90": 0.12,
+      "max": 2.15
+    },
+    "loudness": {
+      "input_i": "-22.88",
+      "input_tp": "-2.57",
+      "input_lra": "3.30",
+      "input_thresh": "-33.06",
+      "output_i": "-16.89",
+      "output_tp": "-1.00",
+      "output_lra": "2.90",
+      "output_thresh": "-27.03",
+      "normalization_type": "dynamic",
+      "target_offset": "0.89"
+    }
+  },
+  "v2": {
+    "rate": "+5%",
+    "duration": 117.82754166666666,
+    "sentenceGaps": {
+      "n": 66,
+      "min": 0.119,
+      "median": 0.3571,
+      "p90": 0.5476,
+      "max": 0.55
+    },
+    "loudness": {
+      "input_i": "-16.50",
+      "input_tp": "-1.49",
+      "input_lra": "2.40",
+      "input_thresh": "-27.01",
+      "output_i": "-15.96",
+      "output_tp": "-1.00",
+      "output_lra": "2.40",
+      "output_thresh": "-26.47",
+      "normalization_type": "dynamic",
+      "target_offset": "-0.04"
+    },
+    "withinParagraphGaps": {
+      "n": 59,
+      "min": 0.119,
+      "median": 0.3214,
+      "p90": 0.5453,
+      "max": 0.5476
+    },
+    "betweenParagraphGaps": {
+      "n": 7,
+      "min": 0.55,
+      "median": 0.55,
+      "p90": 0.55,
+      "max": 0.55
+    },
+    "note": "WordBoundary 是发声区间近似，不是声学 forced alignment。句尾保留 280ms；未主观试听。"
+  }
+}
