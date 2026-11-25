@@ -1,0 +1,30 @@
+[aist#0:0/pcm_s16le @ 0x7a0d02c180] Guessed Channel Layout: mono
+Input #0, wav, from 'video/public/gemini4-voice/voice.wav':
+  Duration: 00:01:41.31, bitrate: 768 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 48000 Hz, mono, s16, 768 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s16le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf62.3.100
+  Stream #0:0: Audio: pcm_s16le, 192000 Hz, mono, s16, 3072 kb/s
+    Metadata:
+      encoder         : Lavc62.11.100 pcm_s16le
+size=N/A time=00:00:45.00 bitrate=N/A speed=89.6x elapsed=0:00:00.50
+size=N/A time=00:01:31.90 bitrate=N/A speed=91.2x elapsed=0:00:01.00
+[Parsed_loudnorm_0 @ 0x7a0d038900]
+{
+	"input_i" : "-22.88",
+	"input_tp" : "-2.57",
+	"input_lra" : "3.30",
+	"input_thresh" : "-33.06",
+	"output_i" : "-16.89",
+	"output_tp" : "-1.00",
+	"output_lra" : "2.90",
+	"output_thresh" : "-27.03",
+	"normalization_type" : "dynamic",
+	"target_offset" : "0.89"
+}
+[out#0/null @ 0x7a0d038180] video:0KiB audio:37991KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:01:41.40 bitrate=N/A speed=92.3x elapsed=0:00:01.09

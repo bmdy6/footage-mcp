@@ -1,0 +1,67 @@
+[
+  {
+    "name": "openai-gpt62",
+    "url": "https://www.theverge.com/tech/1035483/openai-releases-its-updated-gpt-6-2-astra-model",
+    "finalUrl": "https://www.theverge.com/tech/1035483/openai-releases-its-updated-gpt-6-2-astra-model",
+    "title": "OpenAI releases its updated GPT-6.2 Astra model. | The Verge",
+    "scrollY": 0,
+    "capturedAt": "2026-11-23T13:58:00.389Z",
+    "width": 1440,
+    "height": 900,
+    "redactions": [
+      "signed-in account control, when present"
+    ]
+  },
+  {
+    "name": "google-neon",
+    "url": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+    "finalUrl": "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-neon/",
+    "title": "Introducing Gemini 4 Neon",
+    "scrollY": 0,
+    "capturedAt": "2026-11-23T13:58:04.243Z",
+    "width": 1440,
+    "height": 900,
+    "redactions": [
+      "signed-in account control, when present"
+    ]
+  },
+  {
+    "name": "anthropic-ipo",
+    "url": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
+    "finalUrl": "https://www.anthropic.com/news/anthropic-prices-initial-public-offering",
+    "title": "Anthropic prices initial public offering \\ Anthropic",
+    "scrollY": 0,
+    "capturedAt": "2026-11-23T13:58:07.932Z",
+    "width": 1440,
+    "height": 900,
+    "redactions": [
+      "signed-in account control, when present"
+    ]
+  },
+  {
+    "name": "aa-gpt62",
+    "url": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+    "finalUrl": "https://artificialanalysis.ai/articles/openai-has-the-2-model-in-the-intelligence-index-with-the-release-of-gpt-6-2-astra-and-gpt-6-2-sol",
+    "title": "OpenAI has the #2 model in the Intelligence Index with the release of GPT-6.2 Astra and GPT-6.2 Sol | Artificial Analysis",
+    "scrollY": 0,
+    "capturedAt": "2026-11-23T13:58:11.782Z",
+    "width": 1440,
+    "height": 900,
+    "redactions": [
+      "signed-in account control, when present"
+    ]
+  },
+  {
+    "name": "google-choosing",
+    "url": "https://ai.google.dev/gemini-api/docs/choosing-a-model",
+    "finalUrl": "https://aistudio.google.com/docs/choosing-a-model",
+    "title": "Choosing a model - Gemini API | Google AI Studio",
+    "scrollY": 0,
+    "capturedAt": "2026-11-23T13:58:21.522Z",
+    "width": 1440,
+    "height": 900,
+    "redactions": [
+      "signed-in account control, when present"
+    ]
+  }
+]

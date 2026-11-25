@@ -1,0 +1,1 @@
+临时目录恢复源文件、已提交音效和冻结 FLAC/MP3；排除 node_modules、派生 WAV/BGM、字体实体和历史输出。npm ci --ignore-scripts --prefer-offline、prepare-assets、npm run check 全部通过。第一次复制误把已提交音效也排除了，修正复制清单后通过；不是项目资产缺失。

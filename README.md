@@ -177,6 +177,8 @@ MCP 新增 `voice_list(lang="zh-CN")`、`voice_preview(voice_id, text)`，音色
 
 ## 合成成片（video/）
 
+Gemini4Race v2 使用独立的 [`video-v2/`](video-v2/README.md)：段落连续配音、八个 cue 驱动场景，按 FredTalk 2.5 的骨架与组件动作重做；[制作简报](video-v2/brief.md)和[素材许可](video-v2/CREDITS.md)随工程保留。
+
 `video/` 是一个 [Remotion](https://www.remotion.dev) 项目：footage-mcp 找来的素材、真实数据、配音和字幕，用代码合成成片。画面不靠 AI 生成，数字和文字都是代码画的，边缘清楚。
 
 <img src="docs/video-demo.jpg" alt="15 秒样片的四个画面：2000 年大字、中美 GDP 柱状对比、「港口」镜头、63% 数字滚动" width="640">
