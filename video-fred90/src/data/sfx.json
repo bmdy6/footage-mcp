@@ -1,0 +1,362 @@
+[
+  {
+    "name": "pop",
+    "at": 0.35,
+    "scene": "opening-stats"
+  },
+  {
+    "name": "slide",
+    "at": 4.0,
+    "scene": "opening-stats"
+  },
+  {
+    "name": "woosh",
+    "at": 6.7,
+    "scene": "opening-proof"
+  },
+  {
+    "name": "pop",
+    "at": 10.8,
+    "scene": "opening-proof"
+  },
+  {
+    "name": "pop",
+    "at": 17.7,
+    "scene": "opening-questions"
+  },
+  {
+    "name": "pop",
+    "at": 19.3,
+    "scene": "opening-questions"
+  },
+  {
+    "name": "slide",
+    "at": 21.5,
+    "scene": "opening-questions"
+  },
+  {
+    "name": "pop",
+    "at": 25.8,
+    "scene": "opening-price"
+  },
+  {
+    "name": "woosh",
+    "at": 28.7,
+    "scene": "chapter-1"
+  },
+  {
+    "name": "pop",
+    "at": 34.0,
+    "scene": "claude"
+  },
+  {
+    "name": "pop",
+    "at": 37.0,
+    "scene": "claude"
+  },
+  {
+    "name": "slide",
+    "at": 38.0,
+    "scene": "claude"
+  },
+  {
+    "name": "slide",
+    "at": 43.4,
+    "scene": "formula"
+  },
+  {
+    "name": "pop",
+    "at": 45.6,
+    "scene": "formula"
+  },
+  {
+    "name": "ding",
+    "at": 49.7,
+    "scene": "formula"
+  },
+  {
+    "name": "pop",
+    "at": 52.7,
+    "scene": "codex"
+  },
+  {
+    "name": "slide",
+    "at": 58.5,
+    "scene": "codex"
+  },
+  {
+    "name": "woosh",
+    "at": 61.7,
+    "scene": "deepseek"
+  },
+  {
+    "name": "pop",
+    "at": 64.8,
+    "scene": "gemini"
+  },
+  {
+    "name": "slide",
+    "at": 68.7,
+    "scene": "gemini"
+  },
+  {
+    "name": "woosh",
+    "at": 75.8,
+    "scene": "chapter-2"
+  },
+  {
+    "name": "pop",
+    "at": 81.4,
+    "scene": "gpu"
+  },
+  {
+    "name": "slide",
+    "at": 85.4,
+    "scene": "gpu"
+  },
+  {
+    "name": "woosh",
+    "at": 87.5,
+    "scene": "console"
+  },
+  {
+    "name": "click",
+    "at": 90.3,
+    "scene": "console"
+  },
+  {
+    "name": "pop",
+    "at": 93.6,
+    "scene": "serial"
+  },
+  {
+    "name": "woosh",
+    "at": 100.0,
+    "scene": "parallel"
+  },
+  {
+    "name": "slide",
+    "at": 107.7,
+    "scene": "cloud-cost"
+  },
+  {
+    "name": "slide",
+    "at": 113.7,
+    "scene": "cloud-total"
+  },
+  {
+    "name": "woosh",
+    "at": 119.8,
+    "scene": "chapter-3"
+  },
+  {
+    "name": "pop",
+    "at": 122.8,
+    "scene": "voice-model"
+  },
+  {
+    "name": "pop",
+    "at": 130.5,
+    "scene": "transcription"
+  },
+  {
+    "name": "slide",
+    "at": 134.8,
+    "scene": "transcription"
+  },
+  {
+    "name": "pop",
+    "at": 138.6,
+    "scene": "voice-cost"
+  },
+  {
+    "name": "pop",
+    "at": 141.0,
+    "scene": "voice-cost"
+  },
+  {
+    "name": "slide",
+    "at": 143.3,
+    "scene": "voice-cost"
+  },
+  {
+    "name": "pop",
+    "at": 147.0,
+    "scene": "voice-total"
+  },
+  {
+    "name": "pop",
+    "at": 151.4,
+    "scene": "misc"
+  },
+  {
+    "name": "pop",
+    "at": 152.3,
+    "scene": "misc"
+  },
+  {
+    "name": "pop",
+    "at": 154.0,
+    "scene": "misc"
+  },
+  {
+    "name": "woosh",
+    "at": 158.7,
+    "scene": "receipt"
+  },
+  {
+    "name": "click",
+    "at": 161.0,
+    "scene": "receipt"
+  },
+  {
+    "name": "click",
+    "at": 163.0,
+    "scene": "receipt"
+  },
+  {
+    "name": "click",
+    "at": 165.0,
+    "scene": "receipt"
+  },
+  {
+    "name": "click",
+    "at": 167.0,
+    "scene": "receipt"
+  },
+  {
+    "name": "slide",
+    "at": 168.0,
+    "scene": "answer"
+  },
+  {
+    "name": "ding",
+    "at": 170.4,
+    "scene": "answer"
+  },
+  {
+    "name": "woosh",
+    "at": 176.7,
+    "scene": "chapter-4"
+  },
+  {
+    "name": "pop",
+    "at": 178.7,
+    "scene": "outsource"
+  },
+  {
+    "name": "pop",
+    "at": 182.6,
+    "scene": "outsource"
+  },
+  {
+    "name": "pop",
+    "at": 187.3,
+    "scene": "outsource"
+  },
+  {
+    "name": "woosh",
+    "at": 189.0,
+    "scene": "bars"
+  },
+  {
+    "name": "slide",
+    "at": 192.0,
+    "scene": "bars"
+  },
+  {
+    "name": "woosh",
+    "at": 194.0,
+    "scene": "case"
+  },
+  {
+    "name": "slide",
+    "at": 199.8,
+    "scene": "case"
+  },
+  {
+    "name": "pop",
+    "at": 201.8,
+    "scene": "styles"
+  },
+  {
+    "name": "pop",
+    "at": 203.3,
+    "scene": "styles"
+  },
+  {
+    "name": "pop",
+    "at": 204.4,
+    "scene": "styles"
+  },
+  {
+    "name": "woosh",
+    "at": 208.5,
+    "scene": "objection"
+  },
+  {
+    "name": "pop",
+    "at": 211.0,
+    "scene": "objection"
+  },
+  {
+    "name": "pop",
+    "at": 214.0,
+    "scene": "objection"
+  },
+  {
+    "name": "pop",
+    "at": 216.8,
+    "scene": "abilities"
+  },
+  {
+    "name": "pop",
+    "at": 217.1,
+    "scene": "abilities"
+  },
+  {
+    "name": "pop",
+    "at": 217.4,
+    "scene": "abilities"
+  },
+  {
+    "name": "pop",
+    "at": 217.7,
+    "scene": "abilities"
+  },
+  {
+    "name": "woosh",
+    "at": 225.6,
+    "scene": "rules"
+  },
+  {
+    "name": "woosh",
+    "at": 230.7,
+    "scene": "chapter-5"
+  },
+  {
+    "name": "pop",
+    "at": 232.1,
+    "scene": "audience-list"
+  },
+  {
+    "name": "slide",
+    "at": 233.6,
+    "scene": "audience-1"
+  },
+  {
+    "name": "click",
+    "at": 241.5,
+    "scene": "audience-2"
+  },
+  {
+    "name": "click",
+    "at": 247.0,
+    "scene": "audience-3"
+  },
+  {
+    "name": "click",
+    "at": 252.6,
+    "scene": "audience-4"
+  }
+]

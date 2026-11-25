@@ -1,0 +1,14 @@
+{
+  "status": "blocked",
+  "reason": "Configured Claude endpoint returned HTTP 401 Invalid token. No review completed.",
+  "runnerIssue": "Installed Claude CLI does not support runner --safe-mode; fallback retained dontAsk plus explicit read-only tool allowlist and no MCP.",
+  "attempts": [
+    "code review",
+    "visual review with 6 comparison sheets",
+    "minimal smoke"
+  ],
+  "credentialsChanged": false,
+  "checkedExistingVault": true,
+  "userHandoff": "Asked user to update credentials locally; never send token in chat.",
+  "checkedAt": "2026-11-25T03:23:02.024935+00:00"
+}

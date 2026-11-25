@@ -1,0 +1,357 @@
+{
+  "reference": "FredTalk AI ep90 local v.mp4",
+  "fredCommit": "59b9e9957957dc9f3fd94ab78f95cec33c29e915",
+  "placeholders": [
+    {
+      "id": "P01",
+      "file": "ref-night.png",
+      "referenceSeconds": 78,
+      "crop": [
+        0,
+        80,
+        1024,
+        500
+      ],
+      "usage": "75.8–119.8s 夜景背景",
+      "brandMask": false,
+      "blur": 2,
+      "sha256": "da0fabcbdda15215808558043f61faabd4d396eee88c72ac46325c5db66cef1a"
+    },
+    {
+      "id": "P02",
+      "file": "ref-keyboard.png",
+      "referenceSeconds": 178.55,
+      "crop": [
+        0,
+        80,
+        1024,
+        500
+      ],
+      "usage": "176.7–208.5s 键盘背景",
+      "brandMask": false,
+      "blur": 2,
+      "sha256": "7f02c0f990fdff7670899af1ef69d40402828eb9e54f501b874a615d2d725ed6"
+    },
+    {
+      "id": "P03",
+      "file": "ref-green.png",
+      "referenceSeconds": 208.8,
+      "crop": [
+        0,
+        80,
+        1024,
+        500
+      ],
+      "usage": "208.5–260.9s 暗绿人物背景",
+      "brandMask": false,
+      "blur": 1,
+      "sha256": "f5de6f259f40abf1c3fdd67ffd55e2b9266e31e0525a89c0a6c68e0e9334e48f"
+    },
+    {
+      "id": "P04",
+      "file": "ref-analytics.png",
+      "referenceSeconds": 5.5,
+      "crop": [
+        596,
+        96,
+        947,
+        418
+      ],
+      "usage": "4–6.7s 原作增长后台证据；仅原片练习数据",
+      "brandMask": false,
+      "blur": 0,
+      "sha256": "587157f5fe91cd35328c125bac7db9cc7cd8fda261b5dc05e847ead91425ad15"
+    },
+    {
+      "id": "P05",
+      "file": "ref-cloud-console.png",
+      "referenceSeconds": 89,
+      "crop": [
+        482,
+        112,
+        964,
+        354
+      ],
+      "usage": "87.5–93.6s 云端开关机脚本窗口",
+      "brandMask": false,
+      "blur": 0,
+      "sha256": "a0f0d1eea5a57301658dd052b1d5a8f8543bdea18f0c3f2e14eb2513f4b012fc"
+    },
+    {
+      "id": "P06",
+      "file": "ref-voice-tool.png",
+      "referenceSeconds": 129,
+      "crop": [
+        56,
+        90,
+        963,
+        474
+      ],
+      "usage": "121.6–138.6s 语音模型工具窗口",
+      "brandMask": false,
+      "blur": 0,
+      "sha256": "59f619036bc02d6356843efd0e2e1ea1094bacb4061065cecf6392a68efe1e5a"
+    },
+    {
+      "id": "P07",
+      "file": "ref-voice-demo.png",
+      "referenceSeconds": 142,
+      "crop": [
+        57,
+        106,
+        529,
+        339
+      ],
+      "usage": "138.6–150.8s 声音复刻示例；遮蔽内嵌品牌",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "9a62c1a61a82cb319767c870523009164f2479c180d8b6524150ecaea9e6e8b4"
+    },
+    {
+      "id": "P08",
+      "file": "ref-cover.png",
+      "referenceSeconds": 153,
+      "crop": [
+        56,
+        114,
+        334,
+        274
+      ],
+      "usage": "151.4–158.7s 封面示例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "7510f4c141b6c4bb7c13715f1162b1cb20546d19d1a7c25d8ee2def112879ce7"
+    },
+    {
+      "id": "P09",
+      "file": "ref-quote.png",
+      "referenceSeconds": 181,
+      "crop": [
+        71,
+        109,
+        447,
+        390
+      ],
+      "usage": "178.2–189s 外包报价截图",
+      "brandMask": false,
+      "blur": 0,
+      "sha256": "4cee0a919dedb8f55e6a77100f253e45b3718abfbe74bb90c7c367506595a070"
+    },
+    {
+      "id": "P10",
+      "file": "ref-anime.png",
+      "referenceSeconds": 207,
+      "crop": [
+        63,
+        134,
+        351,
+        282
+      ],
+      "usage": "201.8–208.5s 二次元样例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "3817a815bc7cf1b9d822ddcd695623d4fb32444baa28b8fbec0c107ab341b690"
+    },
+    {
+      "id": "P11",
+      "file": "ref-pixel.png",
+      "referenceSeconds": 207,
+      "crop": [
+        369,
+        134,
+        659,
+        282
+      ],
+      "usage": "201.8–208.5s 像素样例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "73331aabe2cae2c62b57c5be6d2813e81e3da2201a09be1d6e02b8f48a90bafe"
+    },
+    {
+      "id": "P12",
+      "file": "ref-tech.png",
+      "referenceSeconds": 207,
+      "crop": [
+        674,
+        135,
+        964,
+        282
+      ],
+      "usage": "201.8–208.5s 深度技术样例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "cb391fc20a3bc826d483018fa623607664df646d3829fdf41cd89022c9fdeee0"
+    },
+    {
+      "id": "P13",
+      "file": "ref-editor.png",
+      "referenceSeconds": 238,
+      "crop": [
+        438,
+        183,
+        935,
+        425
+      ],
+      "usage": "233.6–241.5s 剪辑师样例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "57e980d54ce3212d641f857e27341d9b1416a9b444a5f4b5753c1064b99dc1e1"
+    },
+    {
+      "id": "P14",
+      "file": "ref-business.png",
+      "referenceSeconds": 244,
+      "crop": [
+        441,
+        180,
+        936,
+        419
+      ],
+      "usage": "241.5–247s 老板业务样例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "cbd34d9b6a6cad69b0625562d39160a4ab22a36fdefe7592689e12fba67632dd"
+    },
+    {
+      "id": "P15",
+      "file": "ref-matrix.png",
+      "referenceSeconds": 250,
+      "crop": [
+        442,
+        180,
+        943,
+        433
+      ],
+      "usage": "247–252.6s MCN矩阵样例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "c8f790f10b93a1c965ae943c523199c5cfeb9f3fcab589449f73bbbc13c8dcd6"
+    },
+    {
+      "id": "P16",
+      "file": "ref-blogger.png",
+      "referenceSeconds": 257,
+      "crop": [
+        441,
+        179,
+        944,
+        425
+      ],
+      "usage": "252.6–259s 个人博主样例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "eb837ee2f18fea7cf804e2528dd2c1ee635d6e8744e18715221ff6ab07af8735"
+    },
+    {
+      "id": "P17",
+      "file": "ref-lin-phone.png",
+      "referenceSeconds": 197,
+      "crop": [
+        98,
+        109,
+        327,
+        471
+      ],
+      "usage": "194–201.8s 小Lin说竖屏例",
+      "brandMask": true,
+      "blur": 0,
+      "sha256": "b00a41c4930c41b4c39b5552ff2a96d0e56541cdc0fc8117984ab2f42091dac8"
+    },
+    {
+      "id": "P18",
+      "file": "ref-horse.mp4",
+      "referenceSeconds": [
+        62,
+        64.8
+      ],
+      "crop": [
+        505,
+        159,
+        464,
+        246
+      ],
+      "usage": "61.7–64.8s DeepSeek视频示例",
+      "brandMask": "top strip cropped",
+      "sha256": "7fbdef2f221f8e79743ec200acb5ec97e83c67ea6cb172bc2512fa6c632ce7ad"
+    },
+    {
+      "id": "P19",
+      "file": "ref-lin.mp4",
+      "referenceSeconds": [
+        194.2,
+        201.8
+      ],
+      "crop": [
+        348,
+        116,
+        607,
+        282
+      ],
+      "usage": "194–201.8s 小Lin说风格示例",
+      "brandMask": "top strip cropped",
+      "sha256": "4a6b3494e5b38130b85b284b5070edd7ea738f070fb217a27c3b46c42df1bd76"
+    }
+  ],
+  "own": [
+    {
+      "file": "own-00.png",
+      "source": "gemini4-race-v2.mp4",
+      "seconds": 2
+    },
+    {
+      "file": "own-01.png",
+      "source": "stardew-promo-40s.mp4",
+      "seconds": 5
+    },
+    {
+      "file": "own-02.png",
+      "source": "gemini4-race-v2.mp4",
+      "seconds": 25
+    },
+    {
+      "file": "own-03.png",
+      "source": "stardew-beat-34s.mp4",
+      "seconds": 16
+    },
+    {
+      "file": "own-04.png",
+      "source": "gdp-demo-15s-v2.mp4",
+      "seconds": 9
+    },
+    {
+      "file": "own-05.png",
+      "source": "gemini4-race-v2.mp4",
+      "seconds": 65
+    },
+    {
+      "file": "own-06.png",
+      "source": "stardew-hype-28s.mp4",
+      "seconds": 9
+    },
+    {
+      "file": "own-07.png",
+      "source": "gemini4-race-v2.mp4",
+      "seconds": 93
+    },
+    {
+      "file": "own-08.png",
+      "source": "gemini4-race-v2.mp4",
+      "seconds": 109
+    },
+    {
+      "file": "own-09.png",
+      "source": "stardew-promo-40s.mp4",
+      "seconds": 25
+    },
+    {
+      "file": "own-10.png",
+      "source": "gemini4-race-v2.mp4",
+      "seconds": 143
+    },
+    {
+      "file": "own-11.png",
+      "source": "stardew-beat-34s.mp4",
+      "seconds": 24
+    }
+  ]
+}

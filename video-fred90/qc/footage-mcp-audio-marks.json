@@ -1,0 +1,8 @@
+{
+  "tool": "footage-mcp audio_marks",
+  "duration": 260.9,
+  "integratedLufs": -16.7,
+  "truePeak": -2.0,
+  "rangeLu": 2.4,
+  "note": "Tool measured narration WAV. Final mixed AAC is measured separately in final-audio.json. Trailing narration silence retained for EndNote."
+}

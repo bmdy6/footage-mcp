@@ -1,0 +1,47 @@
+{
+  "issue": "https://github.com/bmdy6/footage-mcp/issues/14",
+  "overall": "draft-review-blocked",
+  "criteria": [
+    {
+      "item": "时长和原片差≤3秒",
+      "status": "pass",
+      "evidence": "260.9s vs 260.9s; delta 0.0s"
+    },
+    {
+      "item": "口播校对及每段起点≤0.5秒",
+      "status": "pass-with-qualification",
+      "evidence": "52块校对台词；TTS WordBoundary文本相等；9段独立ASR最大起点差0.18秒；未人工逐字听审"
+    },
+    {
+      "item": "每5秒对比主构图同版式",
+      "status": "self-reviewed-pending-independent-review",
+      "evidence": "53对齐备，主代理逐对总览与局部返修；局部差异见diff.md；Claude401未审"
+    },
+    {
+      "item": "同图多句无重复出场闪烁",
+      "status": "pass-by-code-and-sampling",
+      "evidence": "全片时钟，视觉不以字幕为key；11组三帧主体抽样无异常复位；非全片逐帧人工审片"
+    },
+    {
+      "item": "所有占位登记",
+      "status": "pass",
+      "evidence": "19项；17张静态区域含3背景，2段局部无声录屏"
+    },
+    {
+      "item": "片尾规定说明",
+      "status": "pass",
+      "evidence": "259.0–260.9s：仿制练习，原作 FredTalk AI 第 90 期，仅自用"
+    }
+  ],
+  "claudeReview": "blocked: HTTP 401 Invalid token",
+  "checks": {
+    "typescript": "passed",
+    "timeline": "passed",
+    "pythonTests": 62,
+    "cleanCheckout": "passed with supplied local reference",
+    "fullDecode": "passed",
+    "integratedLufs": -16.01,
+    "truePeakDbtp": -2.88
+  },
+  "finalSha256": "69109117c8484bd6953988479a112cf53f319c19114fcb3a6f7e5143337a0e21"
+}

@@ -1,0 +1,160 @@
+{
+  "method": "Three consecutive final encoded frames at static subject regions; visual inspection still required. No claim of exhaustive frame-by-frame human review.",
+  "samples": [
+    {
+      "time": 41,
+      "subjectBox": [
+        180,
+        100,
+        840,
+        460
+      ],
+      "meanPixelDifference": [
+        0.0,
+        0.0
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 51.5,
+      "subjectBox": [
+        60,
+        230,
+        980,
+        470
+      ],
+      "meanPixelDifference": [
+        0.004486714975845411,
+        0.0036926328502415455
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 71.5,
+      "subjectBox": [
+        60,
+        170,
+        990,
+        440
+      ],
+      "meanPixelDifference": [
+        0.3165843621399177,
+        0.09298951281030134
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 92.5,
+      "subjectBox": [
+        480,
+        100,
+        970,
+        425
+      ],
+      "meanPixelDifference": [
+        0.0006028257456828886,
+        0.0006111983254840398
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 132.5,
+      "subjectBox": [
+        60,
+        90,
+        960,
+        380
+      ],
+      "meanPixelDifference": [
+        6.768837803320562e-05,
+        0.0
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 144.5,
+      "subjectBox": [
+        550,
+        90,
+        980,
+        380
+      ],
+      "meanPixelDifference": [
+        0.002159850307404437,
+        0.0004116546377973803
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 171.5,
+      "subjectBox": [
+        50,
+        90,
+        490,
+        490
+      ],
+      "meanPixelDifference": [
+        0.00016856060606060608,
+        5.6818181818181825e-05
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 221,
+      "subjectBox": [
+        50,
+        150,
+        975,
+        400
+      ],
+      "meanPixelDifference": [
+        0.00029981981981981983,
+        0.0021001801801801803
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 239,
+      "subjectBox": [
+        410,
+        80,
+        970,
+        470
+      ],
+      "meanPixelDifference": [
+        0.0029884004884004885,
+        0.0004410866910866911
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 245.5,
+      "subjectBox": [
+        410,
+        80,
+        970,
+        470
+      ],
+      "meanPixelDifference": [
+        0.00028693528693528694,
+        0.00020757020757020757
+      ],
+      "flagAbruptReset": false
+    },
+    {
+      "time": 254,
+      "subjectBox": [
+        410,
+        80,
+        970,
+        470
+      ],
+      "meanPixelDifference": [
+        3.205128205128205e-05,
+        3.205128205128205e-05
+      ],
+      "flagAbruptReset": false
+    }
+  ],
+  "abruptResets": 0
+}

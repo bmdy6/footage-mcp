@@ -1,0 +1,21 @@
+{
+  "referenceOneFpsSampling": "approximately second+0.47, not integer seconds",
+  "visualOffsetFrames": 15,
+  "fps": 30,
+  "voiceClock": "unchanged",
+  "subtitleClock": "original-video 5fps OCR, corrected canonical text",
+  "checkedDirectOriginalSeconds": [
+    0,
+    30,
+    65,
+    90,
+    100,
+    105,
+    120,
+    125,
+    165,
+    193,
+    205
+  ],
+  "endNoteGlobalStart": 259
+}

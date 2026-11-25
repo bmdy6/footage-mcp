@@ -1,0 +1,28 @@
+{
+  "input": {
+    "input_i": "-16.72",
+    "input_tp": "-3.64",
+    "input_lra": "2.30",
+    "input_thresh": "-27.07",
+    "output_i": "-16.09",
+    "output_tp": "-3.39",
+    "output_lra": "2.40",
+    "output_thresh": "-26.41",
+    "normalization_type": "dynamic",
+    "target_offset": "0.09"
+  },
+  "finalDecodedAac": {
+    "input_i": "-16.01",
+    "input_tp": "-2.88",
+    "input_lra": "2.40",
+    "input_thresh": "-26.35",
+    "output_i": "-16.09",
+    "output_tp": "-3.35",
+    "output_lra": "2.40",
+    "output_thresh": "-26.42",
+    "normalization_type": "dynamic",
+    "target_offset": "0.09"
+  },
+  "videoBitstream": "copy",
+  "note": "Measured final AAC, not only the source WAV; constant BGM level except ending fade."
+}

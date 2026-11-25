@@ -1,0 +1,17 @@
+node_modules
+out/
+public/fonts/*.ttf
+public/fonts/*.otf
+public/audio/voice.wav
+assets/tts/
+qc/reference-ocr.json
+# Private reference excerpts and comparison videos remain local.
+public/assets/ref-*
+public/audio/bgm.wav
+qc/stages/
+qc/pairs/
+qc/contact-sheets/
+qc/side-by-side.mp4
+qc/render-log.txt
+.remotion/
+qc/seams/

@@ -1,0 +1,88 @@
+{
+  "method": "Independent local faster-whisper small, int8 CPU, word timestamps, matching first spoken anchor within ±1.2s. ASR estimates, not manual phoneme-level listening.",
+  "model": "Systran/faster-whisper-small",
+  "maxAbsoluteAsrError": 0.18,
+  "rows": [
+    {
+      "paragraph": 1,
+      "firstWords": "最近",
+      "scheduledStart": 0.0,
+      "referenceAsrStart": 0.0,
+      "synthesizedAsrStart": 0.0,
+      "errorSeconds": 0.0,
+      "passWithinHalfSecond": true
+    },
+    {
+      "paragraph": 2,
+      "firstWords": "第一",
+      "scheduledStart": 28.8,
+      "referenceAsrStart": 28.68,
+      "synthesizedAsrStart": 28.56,
+      "errorSeconds": -0.12,
+      "passWithinHalfSecond": true
+    },
+    {
+      "paragraph": 3,
+      "firstWords": "第二",
+      "scheduledStart": 75.8,
+      "referenceAsrStart": 75.94,
+      "synthesizedAsrStart": 75.86,
+      "errorSeconds": -0.08,
+      "passWithinHalfSecond": true
+    },
+    {
+      "paragraph": 4,
+      "firstWords": "第三",
+      "scheduledStart": 119.8,
+      "referenceAsrStart": 120.02000000000001,
+      "synthesizedAsrStart": 119.86,
+      "errorSeconds": -0.16,
+      "passWithinHalfSecond": true
+    },
+    {
+      "paragraph": 5,
+      "firstWords": "除",
+      "scheduledStart": 150.3,
+      "referenceAsrStart": 150.56,
+      "synthesizedAsrStart": 150.38,
+      "errorSeconds": -0.18,
+      "passWithinHalfSecond": true
+    },
+    {
+      "paragraph": 6,
+      "firstWords": "把",
+      "scheduledStart": 158.8,
+      "referenceAsrStart": 158.62,
+      "synthesizedAsrStart": 158.74,
+      "errorSeconds": 0.12,
+      "passWithinHalfSecond": true
+    },
+    {
+      "paragraph": 7,
+      "firstWords": "不到",
+      "scheduledStart": 176.3,
+      "referenceAsrStart": 176.38,
+      "synthesizedAsrStart": 176.34,
+      "errorSeconds": -0.04,
+      "passWithinHalfSecond": true
+    },
+    {
+      "paragraph": 8,
+      "firstWords": "也",
+      "scheduledStart": 208.3,
+      "referenceAsrStart": 208.5,
+      "synthesizedAsrStart": 208.36,
+      "errorSeconds": -0.14,
+      "passWithinHalfSecond": true
+    },
+    {
+      "paragraph": 9,
+      "firstWords": "所以",
+      "scheduledStart": 230.3,
+      "referenceAsrStart": 230.36,
+      "synthesizedAsrStart": 230.38,
+      "errorSeconds": 0.02,
+      "passWithinHalfSecond": true
+    }
+  ]
+}
