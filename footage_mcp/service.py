@@ -346,3 +346,10 @@ def video_script_guide() -> str:
     """Return the bundled guide for writing short knowledge-video scripts (topic, structure, visuals)."""
     from importlib.resources import files
     return files("footage_mcp").joinpath("guides/video-script.md").read_text("utf-8")
+
+
+def talking_head_guide() -> str:
+    """Return the bundled workflow for cutting a talking-head recording by text (clean voice, transcribe,
+    force-align, edit script, cut, verify, compose with the Remotion template)."""
+    from importlib.resources import files
+    return files("footage_mcp").joinpath("guides/talking-head.md").read_text("utf-8")

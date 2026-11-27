@@ -179,6 +179,18 @@ def video_script_guide() -> str:
     return S.video_script_guide()
 
 
+@mcp.tool()
+def talking_head_guide() -> str:
+    """Workflow for editing a real talking-head recording (own face + own voice) into a short cut:
+    clean the voice, transcribe with Paraformer, force-align characters with MMS, write a text-based
+    edit script, cut on character boundaries with breathing room and crossfades, verify the result by
+    re-transcribing each sentence, then compose with the Remotion template (footage full screen, small
+    face picture-in-picture bottom-left). Includes default parameters and known pitfalls.
+
+    Call this BEFORE cutting a talking-head video, then follow it."""
+    return S.talking_head_guide()
+
+
 @mcp.prompt()
 def video_script(topic: str) -> str:
     """Write a 3-5 minute knowledge-video script for a topic, following the bundled guide."""
