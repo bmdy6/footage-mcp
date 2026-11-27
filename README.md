@@ -157,6 +157,7 @@ MCP 新增 `voice_list(lang="zh-CN")`、`voice_preview(voice_id, text)`，音色
 | `footage_credits` | 中英署名及 NC / ND / 不明授权 / 缺署名报告 |
 | `audio_marks` | 静音、响度、建议进出点与可选节拍 |
 | `video_script_guide` | 写视频文稿前先读：选题、文稿结构、句子写法、画面和自查清单（也有同名 prompt `video_script`，命令行 `footage-mcp guide`） |
+| `talking_head_guide` | 剪真人口播前先读：降噪、转写、强制对齐、按文字剪、逐句验证、左下角人像模板（命令行 `footage-mcp guide --talking-head`） |
 
 ## 素材就是上下文
 
@@ -196,6 +197,7 @@ npm run qa -- out/gdp-demo.mp4                 # 质检：黑屏、闪帧、每�
 - **数据带来源**：每个数据画面左下角写来源和更新日期，查不到写「未取得」。
 - **片尾自动列素材**：读 `footage.json`，非免费或授权不明的素材自动标「非免费，仅自用」。
 - **审美手册** [`video/STYLE.md`](video/STYLE.md)：黑、金、红三色，节奏规则来自对一条知识解说视频的拆解（[`video/docs/rhythm-reference.md`](video/docs/rhythm-reference.md)）。
+- **真人口播按文字剪** [`video/talking-head/`](video/talking-head/README.md)：Paraformer 转写 + MMS 强制对齐逐字时间，按剪辑稿保留原话、切点落在字边界，剪完逐句转写验证；画面模板 `TalkingHead` 让素材全屏、人像小窗固定左下角。完整流程见 [`footage_mcp/guides/talking-head.md`](footage_mcp/guides/talking-head.md)。
 
 ## 授权说明
 
@@ -215,7 +217,7 @@ python -m build
 
 From script to publishable assets: match each sentence to video, music or sound candidates, compare real frames, download your choices, and export bilingual credits with a license-risk report. Verify original rights before publication. Existing search/download defaults remain unchanged.
 
-`video/` is a Remotion project that turns the downloaded footage, real data, voice-over and subtitles into a finished video with code — see the 15-second sample in [Release v0.2.0](https://github.com/bmdy6/footage-mcp/releases/tag/v0.2.0).
+`video/` is a Remotion project that turns the downloaded footage, real data, voice-over and subtitles into a finished video with code — see the 15-second sample in [Release v0.2.0](https://github.com/bmdy6/footage-mcp/releases/tag/v0.2.0). `video/talking-head/` cuts a real talking-head recording by text: Paraformer transcription plus MMS forced alignment, an edit script of kept phrases, cuts on character boundaries with crossfades, per-sentence re-transcription to verify, and a Remotion template with footage full screen and a small face inset (workflow: `talking_head_guide`).
 
 | Capability | Single-source search wrapper | footage-mcp |
 |---|---|---|
